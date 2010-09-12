@@ -5,10 +5,12 @@
 
 package bitFlip;
 
+
 import java.util.ArrayList;
+import java.io.*;
 
 /**
- * The Generator module.
+ * The Generator module
  *
  * Provides the necessary methods for generating the numbers for the game.
  *
@@ -158,5 +160,55 @@ public class Generator {
      */
     public void genRandomBit() {
         setRandomBit((int)(Math.random() * 2));
+    }
+}
+
+class Main {
+
+	private static int iteration = 1;
+
+	public static void prettyPrint(ArrayList array) {
+		System.out.println("Iteration: " + iteration);
+		for (int i=0; i < array.size(); i++) {
+			if ( i % 10 == 0 ) {
+				System.out.println();
+			}
+			System.out.print(array.get(i) + ",");
+		}
+		System.out.println();
+		iteration++;
+	}
+
+	public static void testRun() {
+        Generator testGen = new Generator();
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		String input;
+        for ( int i = 1; i < 7; i++ ) {
+			input = null;
+            prettyPrint(testGen.generateNumbers());
+			System.out.println("Is your number on that list?");
+			try {
+				input = br.readLine();
+				System.out.println("Input:" + input);
+			} catch (IOException ioe) {
+				System.exit(1);
+			}
+			if (input.startsWith("y")) {
+				testGen.yes();
+			}
+			else {
+				testGen.no();
+			}
+			testGen.incrementStep();
+        }
+	}
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        testRun();
     }
 }
