@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * SignMixFrame.java
  *
  * Created on 12/09/2010, 11:01:54 AM
@@ -13,10 +8,6 @@ package signMix;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author kenny
- */
 public class SignMixFrame extends javax.swing.JFrame {
     private Generator generador = new Generator();
     private ArrayList<String> numeros = new ArrayList<String>();
@@ -166,7 +157,7 @@ public class SignMixFrame extends javax.swing.JFrame {
      */
     private void reset() {
         // Generar nuevos numeros
-        this.numeros = generador.generador(1);
+        this.numeros = generador.generar(1);
         // Reemplazar los controles de la ventana.
         etiPrimer.setText(this.numeros.get(0));
         txtSigno1.setText("");
