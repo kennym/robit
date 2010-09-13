@@ -1,16 +1,8 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * MenuPrincipal.java
  *
  * Created on 12/09/2010, 08:21:23 AM
  */
-
-import java.awt.Graphics;
-
 public class MenuPrincipal extends javax.swing.JFrame {
 
     /** Creates new form MenuPrincipal */
