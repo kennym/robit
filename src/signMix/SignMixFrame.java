@@ -157,7 +157,7 @@ public class SignMixFrame extends javax.swing.JFrame {
      */
     private void reset() {
         // Generar nuevos numeros
-        this.numeros = generador.generar(1);
+        this.numeros = generador.generarProblema(1);
         // Reemplazar los controles de la ventana.
         etiPrimer.setText(this.numeros.get(0));
         txtSigno1.setText("");
