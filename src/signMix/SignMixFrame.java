@@ -12,6 +12,12 @@ public class SignMixFrame extends javax.swing.JFrame {
     private Generator generador = new Generator();
     private ArrayList<String> numeros = new ArrayList<String>();
 
+    /** El nivel del juego
+     *
+     * De acuerdo al nivel se mostrarán más etiquetas y entradas de texto.
+     */
+    int nivel;
+
     /** Creates new form SignMixFrame */
     public SignMixFrame() {
         initComponents();
@@ -30,9 +36,14 @@ public class SignMixFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         etiMensaje = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         etiPrimer = new javax.swing.JLabel();
         txtSigno1 = new javax.swing.JTextField();
         etiSegundo = new javax.swing.JLabel();
+        txtSigno2 = new javax.swing.JTextField();
+        etiTercerNumero = new javax.swing.JLabel();
+        txtSigno3 = new javax.swing.JTextField();
+        etiCuartoNumero = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         etiResultado = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -43,68 +54,61 @@ public class SignMixFrame extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        etiMensaje.setText("jLabel1");
+        etiMensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiMensaje.setText("El mensaje a desplegar...");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(etiMensaje)
-                .addGap(171, 171, 171))
+                .addContainerGap()
+                .addComponent(etiMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(etiMensaje)
-                .addGap(30, 30, 30))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(etiMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setLayout(new java.awt.GridLayout());
+
+        jPanel4.setLayout(new java.awt.GridBagLayout());
 
         etiPrimer.setText("PrimerNumero");
+        jPanel4.add(etiPrimer, new java.awt.GridBagConstraints());
 
         txtSigno1.setColumns(1);
+        jPanel4.add(txtSigno1, new java.awt.GridBagConstraints());
 
         etiSegundo.setText("SegundoNumero");
+        jPanel4.add(etiSegundo, new java.awt.GridBagConstraints());
 
-        jLabel3.setText("=");
+        txtSigno2.setColumns(1);
+        jPanel4.add(txtSigno2, new java.awt.GridBagConstraints());
+
+        etiTercerNumero.setText("TercerNumero");
+        jPanel4.add(etiTercerNumero, new java.awt.GridBagConstraints());
+
+        txtSigno3.setColumns(1);
+        jPanel4.add(txtSigno3, new java.awt.GridBagConstraints());
+
+        etiCuartoNumero.setText("CuartoNumero");
+        jPanel4.add(etiCuartoNumero, new java.awt.GridBagConstraints());
+
+        jLabel3.setText(" = ");
+        jPanel4.add(jLabel3, new java.awt.GridBagConstraints());
 
         etiResultado.setText("Resultado");
+        jPanel4.add(etiResultado, new java.awt.GridBagConstraints());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(etiPrimer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSigno1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(etiSegundo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(etiResultado)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(etiPrimer)
-                    .addComponent(txtSigno1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etiSegundo)
-                    .addComponent(jLabel3)
-                    .addComponent(etiResultado))
-                .addContainerGap(61, Short.MAX_VALUE))
-        );
+        jPanel1.add(jPanel4);
 
-        jPanel3.setLayout(new java.awt.GridLayout());
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
         btnOk.setText("OK");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
@@ -120,31 +124,33 @@ public class SignMixFrame extends javax.swing.JFrame {
                 btnResetActionPerformed(evt);
             }
         });
-        jPanel3.add(btnReset);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(12, 12, 12))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                        .addGap(153, 153, 153)
+                        .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReset))
                 .addContainerGap())
         );
 
@@ -166,10 +172,12 @@ public class SignMixFrame extends javax.swing.JFrame {
     }
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-                /* Tenemos que controlar que txtSigno no está vacío. -> Mostar un
-                 * mensaje si no se completó.
-                 */
-        System.out.println(txtSigno1.getText());
+        /*
+         * Cuando el jugador aprieta el botón OK, verificar que el resultado
+         * sea correcto.
+         */
+
+
         if (txtSigno1.getText().startsWith("+") ||
                 txtSigno1.getText().startsWith("-")) {
             // Comparar el signo en la lista.
@@ -203,15 +211,20 @@ public class SignMixFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOk;
     private javax.swing.JButton btnReset;
+    private javax.swing.JLabel etiCuartoNumero;
     private javax.swing.JLabel etiMensaje;
     private javax.swing.JLabel etiPrimer;
     private javax.swing.JLabel etiResultado;
     private javax.swing.JLabel etiSegundo;
+    private javax.swing.JLabel etiTercerNumero;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField txtSigno1;
+    private javax.swing.JTextField txtSigno2;
+    private javax.swing.JTextField txtSigno3;
     // End of variables declaration//GEN-END:variables
 
 }
