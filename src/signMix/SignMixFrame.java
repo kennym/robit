@@ -16,11 +16,14 @@ public class SignMixFrame extends javax.swing.JFrame {
      *
      * De acuerdo al nivel se mostrarán más etiquetas y entradas de texto.
      */
-    int nivel;
-
+    int nivel=1;
     /** Creates new form SignMixFrame */
     public SignMixFrame() {
         initComponents();
+         etiTercerNumero.setVisible(false);
+        etiCuartoNumero.setVisible(false);
+        txtSigno2.setVisible(false);
+        txtSigno3.setVisible(false);
         reset();
     }
 
@@ -161,6 +164,37 @@ public class SignMixFrame extends javax.swing.JFrame {
      *
      * Generar un nuevo problema.
      */
+    public void subirNivel(){
+             nivel++;
+             if(nivel==2){
+                 this.numeros= generador.generarProblema(2);
+                etiTercerNumero.setVisible(true);
+                txtSigno2.setVisible(true);
+                etiPrimer.setText(this.numeros.get(0));
+                txtSigno1.setText("");
+                etiSegundo.setText(this.numeros.get(2));
+                etiTercerNumero.setText(this.numeros.get(4));
+                etiResultado.setText(this.numeros.get(5));
+                etiMensaje.setText("correcto!!! pasaste al siguiente nivel");
+             }else if(nivel==3){
+                 etiCuartoNumero.setVisible(true);
+                 txtSigno3.setVisible(true);
+                 this.numeros=generador.generarProblema(3);
+                 etiPrimer.setText(this.numeros.get(0));
+                 txtSigno1.setText("");
+                 txtSigno2.setText("");
+                 etiSegundo.setText(this.numeros.get(2));
+                 etiTercerNumero.setText(this.numeros.get(4));
+                 etiCuartoNumero.setText(this.numeros.get(6));
+                 etiResultado.setText(this.numeros.get(7));
+                 etiMensaje.setText("correcto!!! pasaste al siguiente nivel");
+             } else{
+                 etiMensaje.setText("Ganaste!!!!felicidades!!");
+                 jPanel1.remove(jPanel4);
+                 Felicidades feliz = new Felicidades();
+                 jPanel1.add(feliz);
+             }
+    }
     private void reset() {
         // Generar nuevos numeros
         this.numeros = generador.generarProblema(1);
@@ -169,6 +203,8 @@ public class SignMixFrame extends javax.swing.JFrame {
         txtSigno1.setText("");
         etiSegundo.setText(this.numeros.get(2));
         etiResultado.setText(this.numeros.get(3));
+        nivel=1;
+
     }
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
@@ -176,21 +212,30 @@ public class SignMixFrame extends javax.swing.JFrame {
          * Cuando el jugador aprieta el botón OK, verificar que el resultado
          * sea correcto.
          */
+if(nivel==1){
 
-
+ etiTercerNumero.setVisible(false);
+etiCuartoNumero.setVisible(false);
+txtSigno2.setVisible(false);
+txtSigno3.setVisible(false);
         if (txtSigno1.getText().startsWith("+") ||
                 txtSigno1.getText().startsWith("-")) {
             // Comparar el signo en la lista.
-            if (txtSigno1.getText().startsWith(this.numeros.get(1))) {
+            if (txtSigno1.getText().startsWith(this.generador.obtenerSigno(this.numeros.get(1)))) {
                 // El signo está correcto
                 etiMensaje.setText("Correcto! Sos un master!");
-                reset();
+                 subirNivel();
             } else {
                 etiMensaje.setText("No está correcto. Intentá de nuevo.");
             }
         } else {
             etiMensaje.setText("Ingrese el signo + ó - !");
         }
+    }else if(nivel==2){
+        subirNivel();
+    }else if(nivel== 3){
+        subirNivel();
+    }
 }//GEN-LAST:event_btnOkActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
@@ -201,6 +246,14 @@ public class SignMixFrame extends javax.swing.JFrame {
     * @param args the command line arguments
     */
     public static void main() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SignMixFrame().setVisible(true);
+            }
+        });
+    }
+    
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SignMixFrame().setVisible(true);
