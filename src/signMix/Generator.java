@@ -80,6 +80,10 @@ public class Generator {
                 Integer.parseInt(x2)));
     }
 
+    public String obtenerSigno(String op) {
+        return String.valueOf(Operador.valueOf(op));
+    }
+
     /**
      * Generar un numero aleatorio y retornarlo como objeto String.
      *
@@ -129,7 +133,7 @@ public class Generator {
             // Crear otro numero
             resultado.add(generarNumero());
             // Hallar el resultado.
-            Operador op1 = Operador.valueOf(signos.get(1));
+            Operador op1 = Operador.valueOf(resultado.get(1));
 
             String res = calcular(op1, resultado.get(0), resultado.get(2));
             resultado.add(res);
@@ -223,7 +227,7 @@ public class Generator {
 
     public static void main(String[] args) {
         Generator generador = new Generator();
-        int nivel = 3;
+        int nivel = 1;
         System.out.println(generador.generarProblema(nivel));
     }
 }
