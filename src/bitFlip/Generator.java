@@ -1,10 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package bitFlip;
-
 
 import java.util.ArrayList;
 import java.io.*;
@@ -75,17 +69,19 @@ public class Generator {
 	 * `Generator.generateNumbers` method.
 	 */
 	public void yes() {
-	if (this.random_bit == 1)
-        this.final_number += (1 << this.step_number);
+        incrementStep();
+        if (this.random_bit == 1)
+            this.final_number += (1 << this.step_number);
 
-	if (this.step_number + 1 > 6)
-	    System.out.println(this.final_number);
+        if (this.step_number + 1 > 6)
+            System.out.println(this.final_number);
     }
 
 	/**
 	 *
 	 */
 	public void no() {
+        incrementStep();
 		if (this.random_bit == 0)
 		    this.final_number += (1 << this.step_number);
 

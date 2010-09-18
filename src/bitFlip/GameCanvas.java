@@ -3,30 +3,14 @@ package bitFlip;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.Random;
 
-import javax.swing.JFrame;
-
-import java.util.ArrayList;
-
-    
 /**
  * The Canvas on which the numbers are drawn.
  */
 public class GameCanvas extends Canvas {
-    // The string showing the final number
-    private String final_number;
     // The grid of the numbers.
     private Generator generator = new Generator();
-    //
-    private ArrayList numberGrid = generator.generateNumbers();
-    // The fontmetrics
-    private FontMetrics font_metric;
 
     /**
      * Initializer of NumberBoard
@@ -37,11 +21,8 @@ public class GameCanvas extends Canvas {
         setBackground(Color.WHITE);
     }
 
-    /**
-     * Wipe the entire grid.
-     */
-    public void wipeBoard() {
-        this.numberGrid.clear();
+    public void repaint(Graphics g) {
+        paint(g);
     }
 
     public void paint(Graphics g) {
@@ -86,5 +67,4 @@ public class GameCanvas extends Canvas {
                     l * m_h + (m_h + 10) / 2);
         }
     }
-
 }
