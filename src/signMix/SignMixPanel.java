@@ -23,11 +23,6 @@ public class SignMixPanel extends javax.swing.JPanel {
     /** Creates new form SignMixFrame */
     public SignMixPanel() {
         initComponents();
-        // Porque empezamos en el nivel 1 al principio ocultar los otros controles
-        etiTercerNumero.setVisible(false);
-        etiCuartoNumero.setVisible(false);
-        txtSigno2      .setVisible(false);
-        txtSigno3      .setVisible(false);
         reset();
     }
 
@@ -75,15 +70,36 @@ public class SignMixPanel extends javax.swing.JPanel {
     }
 
     private void reset() {
+        resetearNivel();
         // Generar nuevos numeros
-        this.numeros = generador.generarProblema(1);
+        this.numeros = generador.generarProblema(this.nivel);
         // Reemplazar los controles de la ventana.
-        etiPrimer.setText(this.numeros.get(0));
-        txtSigno1.setText("");
-        etiSegundo.setText(this.numeros.get(2));
+        vaciarSignos();
+        etiPrimer   .setText(this.numeros.get(0));
+        etiSegundo  .setText(this.numeros.get(2));
         etiResultado.setText(this.numeros.get(3));
-        nivel=1;
+        // Ocultar los controles de los niveles superior a 1
+        etiTercerNumero.setVisible(false);
+        etiCuartoNumero.setVisible(false);
+        txtSigno2      .setVisible(false);
+        txtSigno3      .setVisible(false);
+    }
 
+    /**
+     * Vaciar todos los signos en la interfaz gráfica.
+     *
+     * En vez de escribir:
+
+        txtSigno1   .setText("");
+        txtSigno2   .setText("");
+        txtSigno3   .setText("");
+     *
+     * Solo llamar a este método, que se encarge de eso.
+     */
+    private void vaciarSignos() {
+        txtSigno1   .setText("");
+        txtSigno2   .setText("");
+        txtSigno3   .setText("");
     }
 
     public void incrementarNivel() {
