@@ -211,7 +211,7 @@ public class Generator {
             // - + +
             // - - -
             //
-            // La SOLUCIÓN de UNA línea de código
+            // ATENCIÓN: Magica -- No tocar!
             String res =
                     calcular(op3,
                         calcular(op2,

@@ -6,6 +6,8 @@ import java.util.ArrayList;
  *
  * @author Kenny Meyer <knny.myer@gmail.com>
  * @author Jorge Gimenez <jrg.gmnz@hotmail.com>
+ *
+ * TODO: El temporizador
  */
 public class SignMixPanel extends javax.swing.JPanel {
 
@@ -21,42 +23,54 @@ public class SignMixPanel extends javax.swing.JPanel {
     /** Creates new form SignMixFrame */
     public SignMixPanel() {
         initComponents();
+        // Porque empezamos en el nivel 1 al principio ocultar los otros controles
         etiTercerNumero.setVisible(false);
         etiCuartoNumero.setVisible(false);
-        txtSigno2.setVisible(false);
-        txtSigno3.setVisible(false);
+        txtSigno2      .setVisible(false);
+        txtSigno3      .setVisible(false);
         reset();
     }
 
+    /**
+     * Subir de nivel.
+     * 
+     * Incrementar el nivel, y desplegar los nuevos controles de acuerdo al nivel.
+     */
     public void subirNivel() {
-         nivel++;
-         if(nivel==2) {
-             this.numeros= generador.generarProblema(2);
-             etiTercerNumero.setVisible(true);
-             txtSigno2.setVisible(true);
-             etiPrimer.setText(this.numeros.get(0));
-             txtSigno1.setText("");
-             etiSegundo.setText(this.numeros.get(2));
-             etiTercerNumero.setText(this.numeros.get(4));
-             etiResultado.setText(this.numeros.get(5));
-             etiMensaje.setText("correcto!!! pasaste al siguiente nivel");
-         } else if(nivel==3) {
+        incrementarNivel();
+        if ( this.nivel == 2 ) {
+            this.numeros = generador.generarProblema(2);
+
+            etiTercerNumero.setVisible(true);
+            txtSigno2      .setVisible(true);
+
+            etiPrimer      .setText(this.numeros.get(0));
+            txtSigno1      .setText("");
+            etiSegundo     .setText(this.numeros.get(2));
+            etiTercerNumero.setText(this.numeros.get(4));
+            etiResultado   .setText(this.numeros.get(5));
+
+            etiMensaje          .setText("correcto!!! pasaste al siguiente nivel");
+         } else if( this.nivel == 3 ) {
+             this.numeros = generador.generarProblema(3);
+
              etiCuartoNumero.setVisible(true);
-             txtSigno3.setVisible(true);
-             this.numeros=generador.generarProblema(3);
-             etiPrimer.setText(this.numeros.get(0));
-             txtSigno1.setText("");
-             txtSigno2.setText("");
-             etiSegundo.setText(this.numeros.get(2));
+             txtSigno3      .setVisible(true);
+
+             etiPrimer      .setText(this.numeros.get(0));
+             txtSigno1      .setText("");
+             txtSigno2      .setText("");
+             etiSegundo     .setText(this.numeros.get(2));
              etiTercerNumero.setText(this.numeros.get(4));
              etiCuartoNumero.setText(this.numeros.get(6));
-             etiResultado.setText(this.numeros.get(7));
-             etiMensaje.setText("correcto!!! pasaste al siguiente nivel");
+             etiResultado   .setText(this.numeros.get(7));
+
+             etiMensaje     .setText("correcto!!! pasaste al siguiente nivel");
          } else {
-             etiMensaje.setText("Ganaste!!!!felicidades!!");
-             jPanel1.remove(jPanel4);
+             etiMensaje .setText("Ganaste!!!!felicidades!!");
+             jPanel1    .remove(jPanel4);
              Felicidades feliz = new Felicidades();
-             jPanel1.add(feliz);
+             jPanel1    .add(feliz);
          }
     }
 
@@ -70,6 +84,14 @@ public class SignMixPanel extends javax.swing.JPanel {
         etiResultado.setText(this.numeros.get(3));
         nivel=1;
 
+    }
+
+    public void incrementarNivel() {
+        this.nivel++;
+    }
+
+    public void resetearNivel() {
+        this.nivel = 1;
     }
 
     /** This method is called from within the constructor to
@@ -208,18 +230,19 @@ public class SignMixPanel extends javax.swing.JPanel {
          * Cuando el jugador aprieta el botón OK, verificar que el resultado
          * sea correcto.
          */
-        if(nivel==1){
-
-            etiTercerNumero.setVisible(false);
-            etiCuartoNumero.setVisible(false);
-            txtSigno2.setVisible(false);
-            txtSigno3.setVisible(false);
+        if ( nivel == 1 ) {
             if (txtSigno1.getText().startsWith("+") ||
                     txtSigno1.getText().startsWith("-")) {
-                // Comparar el signo en la lista.
-                if (txtSigno1.getText().startsWith(this.generador.obtenerSigno(this.numeros.get(1)))) {
-                    // El signo está correcto
+                // Comparar el primer signo en la lista.
+                if (txtSigno1.getText().startsWith(
+                        this.generador.obtenerSigno(
+                            this.numeros.get(1)
+                            )
+                        )
+                    ) {
+                    // El signo está correcto ...
                     etiMensaje.setText("Correcto! Sos un master!");
+                    // y subir de nivel...
                     subirNivel();
                 } else {
                     etiMensaje.setText("No está correcto. Intentá de nuevo.");
@@ -227,9 +250,9 @@ public class SignMixPanel extends javax.swing.JPanel {
             } else {
                 etiMensaje.setText("Ingrese el signo + ó - !");
             }
-        }else if(nivel==2){
+        } else if ( nivel==2 ) {
             subirNivel();
-        }else if(nivel== 3){
+        } else if ( nivel== 3 ) {
             subirNivel();
         }
 }//GEN-LAST:event_btnOkActionPerformed
