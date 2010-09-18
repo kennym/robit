@@ -230,9 +230,12 @@ public class SignMixPanel extends javax.swing.JPanel {
          * Cuando el jugador aprieta el botón OK, verificar que el resultado
          * sea correcto.
          */
+
+        // El patrón
+        String masOMenos = "^(\\+|\\-)"; // O "+" o "-"
+
         if ( nivel == 1 ) {
-            if (txtSigno1.getText().startsWith("+") ||
-                    txtSigno1.getText().startsWith("-")) {
+            if ( txtSigno1.getText().matches(masOMenos)) {
                 // Comparar el primer signo en la lista.
                 if (txtSigno1.getText().startsWith(
                         this.generador.obtenerSigno(
@@ -251,9 +254,55 @@ public class SignMixPanel extends javax.swing.JPanel {
                 etiMensaje.setText("Ingrese el signo + ó - !");
             }
         } else if ( nivel==2 ) {
-            subirNivel();
+            if ( txtSigno1.getText().matches(masOMenos) &&
+                 txtSigno2.getText().matches(masOMenos)) {
+                // Comparar el primer y segundo signo en la lista.
+                if (( txtSigno1.getText().startsWith(
+                        this.generador.obtenerSigno(
+                            this.numeros.get(1))) &&
+                    ( txtSigno2.getText().startsWith(
+                        this.generador.obtenerSigno(
+                            this.numeros.get(3))
+                            )
+                        )
+                    )) {
+                    // El signo está correcto ...
+                    etiMensaje.setText("Correcto! Sos un master!");
+                    // y subir de nivel...
+                    subirNivel();
+
+                } else {
+                    etiMensaje.setText("No está correcto. Intentá de nuevo.");
+                }
+            } else {
+                etiMensaje.setText("Ingrese el signo + ó - !");
+            }
         } else if ( nivel== 3 ) {
-            subirNivel();
+            if ( txtSigno1.getText().matches(masOMenos) &&
+                 txtSigno2.getText().matches(masOMenos) &&
+                 txtSigno3.getText().matches(masOMenos)) {
+                // Comparar el primer, segundo y tercer signo en la lista.
+                if (( txtSigno1.getText().startsWith(
+                        this.generador.obtenerSigno(
+                            this.numeros.get(1)))) &&
+                    ( txtSigno2.getText().startsWith(
+                        this.generador.obtenerSigno(
+                            this.numeros.get(3)))) &&
+                    ( txtSigno3.getText().startsWith(
+                        this.generador.obtenerSigno(
+                            this.numeros.get(5))))
+                    ) {
+                    // Los signos se ha puestos correctamente
+                    etiMensaje.setText("Correcto! Sos un master!");
+                    // y subir de nivel...
+                    subirNivel();
+
+                } else {
+                    etiMensaje.setText("No está correcto. Intentá de nuevo.");
+                }
+            } else {
+                etiMensaje.setText("Ingrese el signo + ó - !");
+            }
         }
 }//GEN-LAST:event_btnOkActionPerformed
 
