@@ -18,7 +18,7 @@ import javax.swing.JFrame;
  * @author Kenny Meyer <knny.myer@gmail.com>
  */
 public class GamePanel extends javax.swing.JPanel {
-    private Generator generador = new Generator();
+    private Generator generador = Generator.getInstance();
     /** Creates new form GamePanel */
     public GamePanel() {
         initComponents();
@@ -133,15 +133,15 @@ public class GamePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
-        generador.incrementStep();
-        System.out.print(generador.getStep());
+        generador.yes();
         canvas1.repaint();
+        generador.incrementStep();
 }//GEN-LAST:event_btnSiActionPerformed
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
-        generador.incrementStep();
-        System.out.print(generador.getStep());
+        generador.no();
         canvas1.repaint();
+        generador.incrementStep();
 }//GEN-LAST:event_btnNoActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed

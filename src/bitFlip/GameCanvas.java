@@ -34,20 +34,18 @@ public class GameCanvas extends Canvas {
         g.clearRect(0, 0, getWidth(), getHeight());
         g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
 
-
         ArrayList numeros = generador.generateNumbers();
 
         int width = ((dimensionLocal.width - 2 * 10) / 10);
         int height = ((dimensionLocal.height - 2 * 10) / 10);
 
         // NO TOCAR! MAGIA!
-        System.out.println(numeros.size());
         for ( int i = 0; i < numeros.size(); i++) {
             int x = i % 10;
             int y = i / 10;
 
             String num = "";
-            if (!(String.valueOf(numeros.get(i)).startsWith("0"))) {
+            if ( ! ( String.valueOf(numeros.get(i)).startsWith("0") ) ) {
                 num = String.valueOf(numeros.get(i));
             }
 

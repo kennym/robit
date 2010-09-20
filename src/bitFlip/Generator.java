@@ -11,6 +11,7 @@ import java.io.*;
  * @author Kenny Meyer <knny.myer@gmail.com>
  */
 public class Generator {
+    // La instancia del generador
     private static Generator _instance;
 
 	public int max_number = 100; // El numero máximo de numeros a generar.
@@ -19,13 +20,8 @@ public class Generator {
     private int random_bit;  // Bit aleatorio que es o 1 o 0.
     private int step_number = 1; // Guarda información del número del paso
 
-	/**
-	 * El constructor de la clase `Generator`.
-	 */
 	private void Generator() {
-        // Generate a random bit
-        genRandomBit();
-        System.out.println(getRandomBit());
+
     }
 
     public static synchronized Generator getInstance() {
@@ -53,6 +49,11 @@ public class Generator {
 	 * @return ArrayList
 	 */
     public ArrayList generateNumbers() {
+        if (this.random_bit == 0) {
+            genRandomBit();
+            System.out.println(getRandomBit());
+        }
+
         ArrayList numbers = new ArrayList();
         for (int j = 1; j < this.max_number ; j++){
             if (((j & 1 << this.step_number) <= 0) || (this.random_bit != 1)) {
