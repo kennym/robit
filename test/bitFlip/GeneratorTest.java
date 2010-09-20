@@ -3,9 +3,8 @@
  * and open the template in the editor.
  */
 
-package numerosaleatorios;
+package bitFlip;
 
-import bitFlip.Generator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -47,7 +46,6 @@ public class GeneratorTest {
     public void testGenerator() {
         System.out.println("Generator");
         Generator instance = new Generator();
-        instance.Generator();
     }
 
     /**

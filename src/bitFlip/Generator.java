@@ -11,11 +11,7 @@ import java.io.*;
  * @author Kenny Meyer <knny.myer@gmail.com>
  */
 public class Generator {
-    /**
-     * Generate the random numbers for being displayed.
-     * 
-     * @return
-     */
+    private static Generator _instance;
 
 	public int max_number = 100; // El numero máximo de numeros a generar.
 
@@ -24,14 +20,29 @@ public class Generator {
     private int step_number = 1; // Guarda información del número del paso
 
 	/**
-	 * The constructor method of the `Generator` class.
-	 * 
 	 * El constructor de la clase `Generator`.
 	 */
-	public void Generator() {
+	private void Generator() {
         // Generate a random bit
         genRandomBit();
         System.out.println(getRandomBit());
+    }
+
+    public static synchronized Generator getInstance() {
+        if (_instance == null) {
+            _instance = new Generator();
+        }
+        return _instance;
+    }
+
+    /**
+     * No hay clonaje aquí!!! Entendido?!
+     *
+     * @return
+     * @throws CloneNotSupportedException
+     */
+    public Object clone() throws CloneNotSupportedException {
+        throw new CloneNotSupportedException();
     }
 
 	/**
@@ -69,7 +80,6 @@ public class Generator {
 	 * `Generator.generateNumbers` method.
 	 */
 	public void yes() {
-        incrementStep();
         if (this.random_bit == 1)
             this.final_number += (1 << this.step_number);
 
@@ -81,7 +91,6 @@ public class Generator {
 	 *
 	 */
 	public void no() {
-        incrementStep();
 		if (this.random_bit == 0)
 		    this.final_number += (1 << this.step_number);
 

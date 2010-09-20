@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package numerosaleatorios;
+package bitFlip;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
  * @author kenny
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({numerosaleatorios.GeneratorTest.class})
+@Suite.SuiteClasses({bitFlip.GeneratorTest.class})
 public class GeneratorTestSuite {
 
     @BeforeClass

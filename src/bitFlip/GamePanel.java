@@ -11,9 +11,11 @@
 
 package bitFlip;
 
+import javax.swing.JFrame;
+
 /**
  *
- * @author kenny
+ * @author Kenny Meyer <knny.myer@gmail.com>
  */
 public class GamePanel extends javax.swing.JPanel {
     private Generator generador = new Generator();
@@ -146,6 +148,13 @@ public class GamePanel extends javax.swing.JPanel {
         canvas1.repaint();
 }//GEN-LAST:event_btnResetActionPerformed
 
+    public static void main(String args[]) {
+        JFrame frame = new JFrame();
+        frame.add(new GamePanel());
+        frame.setSize(700, 800);
+        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNo;

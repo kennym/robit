@@ -5,12 +5,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
+import java.util.ArrayList;
+
 /**
- * The Canvas on which the numbers are drawn.
+ * El Canvas por el cual se dibuja los numeros.
  */
 public class GameCanvas extends Canvas {
-    // The grid of the numbers.
-    private Generator generator = new Generator();
+    // El generador
+    private Generator generador = Generator.getInstance();
 
     /**
      * Initializer of NumberBoard
@@ -26,45 +28,27 @@ public class GameCanvas extends Canvas {
     }
 
     public void paint(Graphics g) {
-        Dimension localDimension = super.getSize();
-        // Clean up the old stuff
+        Dimension dimensionLocal = super.getSize();
+
         g.clearRect(0, 0, getWidth(), getHeight());
+        g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
 
-        g.drawRect(0, 0,
-                localDimension.width - 1,
-                localDimension.height - 1);
 
-        int m_w = ((localDimension.width - 2 * 10) / 10);
-        int m_h = ((localDimension.width - 2 * 10) / 10);
+        ArrayList numeros = generador.generateNumbers();
 
-        // Generate either 1 or 0 randomly
-        int m_Bit = (int)(Math.random() * 2.0D);
-        // Loop the numbers from 1 to 99
-        for (int j = 1; j < 99; ++j)
-        {
-            if (((j & 1 << this.generator.getStep()) <= 0) || (m_Bit != 1))
-            {
-                if ((j & 1 << this.generator.getStep()) != 0)
-                {
-                    // Skip the current loop.
-                    // This means that the number will not be listed.
-                    continue;
-                }
-                if (m_Bit != 0)
-                {
-                    // Skip the current loop.
-                    // This means that the number will not be listed.
-                    continue;
-                }
-            }
-            // Calculate the coordinates of the graph.
-            int k = j % 10;
-            int l = j / 10;
-            // The number to show.
-            String str = "" + j;
-            g.drawString(str,
-                    k * m_w + (m_w - 20) / 2,
-                    l * m_h + (m_h + 10) / 2);
+        int width = ((dimensionLocal.width - 2 * 10) / 10);
+        int height = ((dimensionLocal.height - 2 * 10) / 10);
+
+        // NO TOCAR! MAGIA!
+        System.out.println(numeros.size());
+        for ( int i = 0; i < numeros.size(); i++) {
+            int x = i % 10;
+            int y = i / 10;
+
+            g.drawString(
+                    String.valueOf(numeros.get(i)),
+                    width  * x + (width  - 20) / 2,
+                    height * y + (height + 10) / 2);
         }
     }
 }
