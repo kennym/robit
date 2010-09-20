@@ -27,6 +27,7 @@ public class GameCanvas extends Canvas {
         paint(g);
     }
 
+    @Override
     public void paint(Graphics g) {
         Dimension dimensionLocal = super.getSize();
 
@@ -45,8 +46,13 @@ public class GameCanvas extends Canvas {
             int x = i % 10;
             int y = i / 10;
 
+            String num = "";
+            if (!(String.valueOf(numeros.get(i)).startsWith("0"))) {
+                num = String.valueOf(numeros.get(i));
+            }
+
             g.drawString(
-                    String.valueOf(numeros.get(i)),
+                    num,
                     width  * x + (width  - 20) / 2,
                     height * y + (height + 10) / 2);
         }
