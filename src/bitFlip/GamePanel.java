@@ -1,14 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * GamePanel.java
- *
- * Created on Sep 17, 2010, 9:49:55 AM
- */
-
 package bitFlip;
 
 import javax.swing.JFrame;
@@ -145,13 +134,14 @@ public class GamePanel extends javax.swing.JPanel {
 }//GEN-LAST:event_btnNoActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        generador.reset();
         canvas1.repaint();
 }//GEN-LAST:event_btnResetActionPerformed
 
     public static void main(String args[]) {
         JFrame frame = new JFrame();
         frame.add(new GamePanel());
-        frame.setSize(700, 800);
+        frame.setSize(700, 700);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
