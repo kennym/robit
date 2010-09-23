@@ -14,11 +14,12 @@ public class Generator {
     // La instancia del generador
     private static Generator _instance;
 
-	public int max_number = 100; // El numero máximo de numeros a generar.
-
+    private int step_number = 1; // Guarda información del número del paso
     private int final_number = 0; // El resultado.
     private int random_bit;  // Bit aleatorio que es o 1 o 0.
-    private int step_number = 1; // Guarda información del número del paso
+
+	public int max_number = 100; // El numero máximo de numeros a generar.
+
 
 	private void Generator() {
 
@@ -49,6 +50,7 @@ public class Generator {
 	 * @return ArrayList
 	 */
     public ArrayList generateNumbers() {
+
         if (this.random_bit == 0) {
             genRandomBit();
             System.out.println(getRandomBit());
@@ -72,7 +74,9 @@ public class Generator {
             }
             numbers.add(j);
         }
+        System.out.println(numbers);
 		if (numbers.size() > 99) throw new AssertionError();
+
         return numbers;
     }
 
@@ -85,18 +89,26 @@ public class Generator {
             this.final_number += (1 << this.step_number);
 
         if (this.step_number + 1 > 6)
-            System.out.println(this.final_number);
+			System.out.println(this.final_number);
     }
 
-	/**
-	 *
-	 */
+    /**
+     *
+     */
 	public void no() {
 		if (this.random_bit == 0)
 		    this.final_number += (1 << this.step_number);
 
 		if (this.step_number + 1 > 6)
 			System.out.println(this.final_number);
+    }
+
+    /**
+     * Resetear el generador.
+     */
+    public void reset() {
+        setStep(1);
+        genRandomBit();
     }
 
     /**
@@ -166,6 +178,14 @@ public class Generator {
      */
     public void genRandomBit() {
         setRandomBit((int)(Math.random() * 2));
+    }
+
+    public int getFinalNumber() {
+        return this.final_number;
+    }
+
+    public void setFinalNumber(int new_value) {
+        this.final_number = new_value;
     }
 }
 
