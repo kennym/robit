@@ -20,6 +20,12 @@ public class GameCanvas extends Canvas {
 
     private Dimension dimensionLocal;
 
+    // Las fuentes del Canvas
+    private static Font F_Descripcion = new Font("SansSerif", Font.BOLD, 15);
+    private static Font F_Grande = new Font("Arial", Font.BOLD, 60);
+    private static Font F_Texto = new Font("SansSerif", Font.PLAIN, 15);
+    private static Font F_Numero = new Font("SansSerif", Font.PLAIN, 12);
+
     /**
      * Initializer of NumberBoard
      */
@@ -52,34 +58,49 @@ public class GameCanvas extends Canvas {
      * @param g
      */
     public void mostrarNumeroFinal(Graphics g) {
-        g.drawString("Tu número en cual pensaste fue: " + generador.getFinalNumber(),
-                dimensionLocal.width / 2,
+        FontMetrics fm = g.getFontMetrics();
+        
+        String mensaje = "Tu número imaginario fué: ";
+        String numero  = generador.getFinalNumber();
+
+        g.setFont(F_Texto);
+        g.drawString(mensaje,
+                // Desplegar el mensaje en el centro.
+                // (Anchura - mensaje) / 2
+                (dimensionLocal.width - fm.stringWidth(mensaje)) / 2,
                 dimensionLocal.height / 2);
+        g.setFont(F_Grande);
+        g.drawString(numero,
+                (dimensionLocal.width - fm.stringWidth(numero)) / 2,
+                // Un 50 px más debajo del centro del canvas menos la altura
+                // de la fuente, porque en el centro se encuentra el mensaje
+                // anterior.
+                (dimensionLocal.height / 2) + fm.getAscent() + 50);
     }
 
     @Override
     public void paint(Graphics g) {
         this.dimensionLocal = super.getSize();
+        g.clearRect(0, 0, getWidth(), getHeight());
+        g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
+
 //        if (this.estado_inicio) {
 //            mostrarPantallaInicial(g);
-//        } else if (generador.getStep() > 5) {
-//            mostrarNumeroFinal(g);
-//        } else {
-//            g.clearRect(0, 0, getWidth(), getHeight());
-//            g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
-
+        if (generador.getStep() > 5) {
+           mostrarNumeroFinal(g);
+        } else {
             // Determinar la fuente de la letra que se va a dibujar en el Canvas
-            g.setFont(new Font("SansSerif", Font.BOLD, 12));
+            g.setFont(F_Numero);
             FontMetrics fm = g.getFontMetrics();
 
-//            // Generar una nueva serie de numeros.
+            // Generar una nueva serie de numeros.
             ArrayList numeros = generador.generateNumbers();
 
             int width = ((dimensionLocal.width - 2 * 10) / 10);
             int height = ((dimensionLocal.height - 2 * 10) / 10);
 
             // NO TOCAR! MAGIA!
-            for ( int i = 0; i < numeros.size(); i++) {
+            for ( int i = 0; i < numeros.size(); i++ ) {
                 int x = i % 10;
                 int y = i / 10;
 
@@ -89,14 +110,15 @@ public class GameCanvas extends Canvas {
                 }
 
                 g.drawString(
-                        // El número de tipo String.
+                        // El número de tipo String, también puede ser un String
+                        // vacío.
                         num,
                         // Determinar la posición de cada número.
                         // El valor 10 se usa para que los numeros parezcan más
                         // centrados. Hay que encontrar una solución mejor.
                         10 + width  * x + (width  - fm.stringWidth(num)) / 2,
                         10 + height * y + (height) / 2);
-//            }
+            }
         }
     }
 }

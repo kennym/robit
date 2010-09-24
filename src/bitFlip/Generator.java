@@ -14,7 +14,7 @@ public class Generator {
     // La instancia del generador
     private static Generator _instance;
 
-    private int step_number = 1; // Guarda información del número del paso
+    private int step_number = 0; // Guarda información del número del paso
     private int final_number = 0; // El resultado.
     private int random_bit;  // Bit aleatorio que es o 1 o 0.
 
@@ -107,7 +107,7 @@ public class Generator {
      * Resetear el generador.
      */
     public void reset() {
-        setStep(1);
+        setStep(0);
         genRandomBit();
     }
 
@@ -180,8 +180,8 @@ public class Generator {
         setRandomBit((int)(Math.random() * 2));
     }
 
-    public int getFinalNumber() {
-        return this.final_number;
+    public String getFinalNumber() {
+        return String.valueOf(this.final_number);
     }
 
     public void setFinalNumber(int new_value) {
