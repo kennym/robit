@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class GameCanvas extends Canvas {
     private static Font F_Descripcion = new Font("SansSerif", Font.BOLD, 15);
     private static Font F_Grande = new Font("Arial", Font.BOLD, 60);
     private static Font F_Texto = new Font("SansSerif", Font.PLAIN, 15);
-    private static Font F_Numero = new Font("SansSerif", Font.PLAIN, 12);
+    private static Font F_Numero = new Font("Sans", Font.BOLD, 14);
 
     /**
      * Initializer of NumberBoard
@@ -35,16 +36,16 @@ public class GameCanvas extends Canvas {
         setBackground(Color.WHITE);
     }
 
-    public void repaint(Graphics g) {
-        paint(g);
-    }
+//    public void repaint(Graphics g) {
+//        paint(g);
+//    }
 
     /**
      * Mostrar el diálogo incial del juego.
      *
      * @param g
      */
-    public void mostrarPantallaInicial(Graphics g) {
+    public void mostrarPantallaInicial(Graphics2D g) {
         // Dibujar Robit.
         g.drawString("Welcome!",
                 dimensionLocal.width / 2,
@@ -57,7 +58,8 @@ public class GameCanvas extends Canvas {
      * 
      * @param g
      */
-    public void mostrarNumeroFinal(Graphics g) {
+    public void mostrarNumeroFinal(Graphics g2) {
+        Graphics2D g = (Graphics2D)(g2);
         FontMetrics fm = g.getFontMetrics();
         
         String mensaje = "Tu número imaginario fué: ";

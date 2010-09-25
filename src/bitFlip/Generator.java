@@ -33,7 +33,7 @@ public class Generator {
     }
 
     /**
-     * No hay clonaje aquí!!! Entendido?!
+     * No hay guerra de clonajes aquí!!! Entendido?!
      *
      * @return
      * @throws CloneNotSupportedException
@@ -51,30 +51,25 @@ public class Generator {
 	 */
     public ArrayList generateNumbers() {
 
-        if (this.random_bit == 0) {
-            genRandomBit();
-            System.out.println(getRandomBit());
-        }
-
         ArrayList numbers = new ArrayList();
-        for (int j = 1; j < this.max_number ; j++){
+        for (int j = 1; j < this.max_number ; j++) {
+            //
             if (((j & 1 << this.step_number) <= 0) || (this.random_bit != 1)) {
                 if ((j & 1 << this.step_number) != 0) {
 					// Añadir 0 a nuestra lista y continuar con el próximo
 					// numero.
 					numbers.add(0);
 					continue;
-				}
-                else if (this.random_bit != 0) {
+                } else if (this.random_bit != 0) {
 					// Añadir 0 a nuestra lista y continuar con el próximo
 					// numero.
 					numbers.add(0);
 					continue;
 				}
             }
+            System.out.println("Añadiendo " + j);
             numbers.add(j);
         }
-        System.out.println(numbers);
 		if (numbers.size() > 99) throw new AssertionError();
 
         return numbers;
@@ -88,8 +83,7 @@ public class Generator {
         if (this.random_bit == 1)
             this.final_number += (1 << this.step_number);
 
-        if (this.step_number + 1 > 6)
-			System.out.println(this.final_number);
+        System.out.println("Numero final: " + this.final_number);
     }
 
     /**
@@ -99,14 +93,21 @@ public class Generator {
 		if (this.random_bit == 0)
 		    this.final_number += (1 << this.step_number);
 
-		if (this.step_number + 1 > 6)
-			System.out.println(this.final_number);
+        System.out.println("Numero final: " + this.final_number);
     }
 
     /**
-     * Resetear el generador.
+     * Reset the generator.
+     * 
+     * Resetting the generator means:
+     * <ul>
+     *  <li>Setting the instance.final_number to 0</li>
+     *  <li>Setting the instance.step_number to 0</li>
+     *  <li>Generate a new random bit</li>
+     * </ul>
      */
     public void reset() {
+        setFinalNumber(0);
         setStep(0);
         genRandomBit();
     }

@@ -93,7 +93,6 @@ public class GamePanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +106,6 @@ public class GamePanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 602, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
@@ -121,13 +119,29 @@ public class GamePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void desactivarBotones() {
+        btnSi.setEnabled(false);
+        btnNo.setEnabled(false);
+    }
+
+    private void activarBotones() {
+        btnSi.setEnabled(true);
+        btnNo.setEnabled(true);
+    }
+
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
+        if (generador.getStep() > 7) {
+            desactivarBotones();
+        }
         generador.yes();
         canvas1.repaint();
         generador.incrementStep();
 }//GEN-LAST:event_btnSiActionPerformed
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
+        if (generador.getStep() > 7) {
+            desactivarBotones();
+        }
         generador.no();
         canvas1.repaint();
         generador.incrementStep();
@@ -136,6 +150,7 @@ public class GamePanel extends javax.swing.JPanel {
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         generador.reset();
         canvas1.repaint();
+        activarBotones();
 }//GEN-LAST:event_btnResetActionPerformed
 
     public static void main(String args[]) {
