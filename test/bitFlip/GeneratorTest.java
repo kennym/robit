@@ -52,18 +52,32 @@ public class GeneratorTest {
      * Test of generateNumbers method, of class Generator.
      */
     @Test
-    public void testGenerateNumbers() {
-        System.out.println("generateNumbers");
-        Generator testFunc = new Generator();
+    public void testGenerateNumbersStep0() {
+        Generator instance = Generator.getInstance();
         // Create an array for our numbers
-        int[] expected = new int[50];
-        ArrayList result   = new ArrayList();
-
+        ArrayList result    = instance.generateNumbers();
+        ArrayList expected  = new ArrayList();
+        
         // Call our function and get the numbers stored in an array.
-        result = testFunc.generateNumbers();
-        expected = null;
-
         assertEquals(result, expected);
+    }
+
+    @Test
+    public void testGuessNumbers() {
+        Generator instance = Generator.getInstance();
+
+        for (int j = 1; j < 100; j++) {
+            for ( int i = 0; i < 7; i++) {
+                ArrayList numbers = instance.generateNumbers();
+                if ( numbers.contains(j)) {
+                    instance.yes();
+                } else {
+                    instance.no();
+                }
+            }
+            assertEquals(j, instance.getFinalNumber());
+            instance.reset();
+        }
     }
 
     /**
@@ -156,11 +170,34 @@ public class GeneratorTest {
      */
     @Test
     public void testYes() {
-        System.out.println("yes");
         Generator instance = new Generator();
-        instance.yes();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        instance.reset();
+        // Set random bit to 1 by force
+        instance.setRandomBit(1);
+        int expected = 0;
+        for (int i = 0; i < 7; i++) {
+            // Sum the product of 1 << step_number to expected.
+            // That is what the yes() method in the generator does.
+            expected += (1 << i);
+            instance.yes();
+            int result = instance.getFinalNumber();
+            assertEquals(expected, result);
+            // And do that i times.
+        }
+        System.out.println(instance.getFinalNumber());
+
+        // IMPORTANT: Reset the generator.
+        instance.reset();
+        instance.setRandomBit(0);
+        expected = 0;
+        for (int i = 0; i < 7; i++) {
+            instance.yes();
+            System.out.println(i);
+            int result = instance.getFinalNumber();
+            // The expected result is always 0.
+            assertEquals(expected, result);
+        }
     }
 
     /**
@@ -168,11 +205,35 @@ public class GeneratorTest {
      */
     @Test
     public void testNo() {
-        System.out.println("no");
         Generator instance = new Generator();
-        instance.no();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        instance.reset();
+        // Set random bit to 1 by force
+        instance.setRandomBit(0);
+        int expected = 0;
+        for (int i = 0; i < 7; i++) {
+            // Sum the product of 1 << step_number to `expected`.
+            // That is what the no() method in the generator does.
+            expected += (1 << i);
+            instance.no();
+            int result = instance.getFinalNumber();
+            assertEquals(expected, result);
+            // And do that i times.
+        }
+        System.out.println(instance.getFinalNumber());
+
+
+        // IMPORTANT: Reset the generator.
+        instance.reset();
+        instance.setRandomBit(1);
+        expected = 0;
+        for (int i = 0; i < 7; i++) {
+            instance.no();
+            System.out.println(i);
+            int result = instance.getFinalNumber();
+            // The expected result is always 0.
+            assertEquals(expected, result);
+        }
     }
 
     /**
@@ -180,10 +241,9 @@ public class GeneratorTest {
      */
     @Test
     public void testReset() {
-        System.out.println("reset");
         Generator instance = new Generator();
         instance.reset();
-        assertTrue(instance.getFinalNumber().contains("0"));
+        assertEquals(instance.getFinalNumber(), 0);
         assertTrue(instance.getStep() == 0);
     }
 
@@ -192,7 +252,6 @@ public class GeneratorTest {
      */
     @Test
     public void testGetStep() {
-        System.out.println("getStep");
         Generator instance = new Generator();
         int expResult = 0;
         int result = instance.getStep();
@@ -208,7 +267,6 @@ public class GeneratorTest {
      */
     @Test (expected=AssertionError.class)
     public void testSetRandomBit() throws Exception {
-        System.out.println("setRandomBit");
         // El valor inválido...
         int n = -1;
         Generator instance = new Generator();
@@ -223,7 +281,6 @@ public class GeneratorTest {
      */
     @Test
     public void testGetRandomBit() {
-        System.out.println("getRandomBit");
         Generator instance = new Generator();
         int expResult = 0;
         int result = instance.getRandomBit();
@@ -240,7 +297,6 @@ public class GeneratorTest {
      */
     @Test
     public void testGenRandomBit() {
-        System.out.println("genRandomBit");
         Generator instance = new Generator();
         for (int i = 0; i < 10; i++) {
             instance.genRandomBit();
@@ -253,10 +309,11 @@ public class GeneratorTest {
      */
     @Test
     public void testGetFinalNumber() {
-        System.out.println("getFinalNumber");
         Generator instance = new Generator();
-        String expResult = "0";
-        String result = instance.getFinalNumber();
+        int expResult = 0;
+        int result = instance.getFinalNumber();
+        
+        assertEquals(expResult, result);
     }
 
     /**
@@ -264,10 +321,9 @@ public class GeneratorTest {
      */
     @Test
     public void testSetFinalNumber() {
-        System.out.println("setFinalNumber");
         int new_value = 0;
         Generator instance = new Generator();
         instance.setFinalNumber(new_value);
-        assertEquals(instance.getFinalNumber(), String.valueOf(new_value));
+        assertEquals(instance.getFinalNumber(), new_value);
     }
 }

@@ -16,7 +16,7 @@ public class Generator {
 
     private int step_number = 0; // Guarda información del número del paso
     private int final_number = 0; // El resultado.
-    private int random_bit;  // Bit aleatorio que es o 1 o 0.
+    private int random_bit = 0;  // Bit aleatorio que es o 1 o 0.
 
 	public int max_number = 100; // El numero máximo de numeros a generar.
 
@@ -49,27 +49,24 @@ public class Generator {
 	 *
 	 * @return ArrayList
 	 */
-    public ArrayList generateNumbers() {
+    public synchronized ArrayList generateNumbers() {
 
         ArrayList numbers = new ArrayList();
         for (int j = 1; j < this.max_number ; j++) {
-            //
-            if (((j & 1 << this.step_number) <= 0) || (this.random_bit != 1)) {
+            if (((j & 1 << this.step_number) <= 0) || (this.random_bit == 0)) {
                 if ((j & 1 << this.step_number) != 0) {
-					// Añadir 0 a nuestra lista y continuar con el próximo
-					// numero.
-					numbers.add(0);
-					continue;
-                } else if (this.random_bit != 0) {
-					// Añadir 0 a nuestra lista y continuar con el próximo
-					// numero.
-					numbers.add(0);
-					continue;
-				}
+                    // Añadir 0 a nuestra lista y continuar con el próximo
+                    // numero.
+                    numbers.add(0);
+                    continue;
+                } else if (this.random_bit == 1) {
+                    numbers.add(0);
+                    continue;
+                }
             }
-            System.out.println("Añadiendo " + j);
             numbers.add(j);
         }
+        // Be sure that there are not more than 99 in the array.
 		if (numbers.size() > 99) throw new AssertionError();
 
         return numbers;
@@ -80,20 +77,20 @@ public class Generator {
 	 * `Generator.generateNumbers` method.
 	 */
 	public void yes() {
-        if (this.random_bit == 1)
+        if (this.random_bit == 1) {
             this.final_number += (1 << this.step_number);
-
-        System.out.println("Numero final: " + this.final_number);
+        }
+        incrementStep();
     }
 
     /**
      *
      */
 	public void no() {
-		if (this.random_bit == 0)
+		if (this.random_bit == 0) {
 		    this.final_number += (1 << this.step_number);
-
-        System.out.println("Numero final: " + this.final_number);
+        }
+        incrementStep();
     }
 
     /**
@@ -181,8 +178,8 @@ public class Generator {
         setRandomBit((int)(Math.random() * 2));
     }
 
-    public String getFinalNumber() {
-        return String.valueOf(this.final_number);
+    public int getFinalNumber() {
+        return this.final_number;
     }
 
     public void setFinalNumber(int new_value) {
@@ -207,7 +204,7 @@ class Main {
 	}
 
 	public static void testRun() {
-        Generator testGen = new Generator();
+        Generator testGen = Generator.getInstance();
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -228,8 +225,8 @@ class Main {
 			else {
 				testGen.no();
 			}
-			testGen.incrementStep();
         }
+        System.out.println(testGen.getFinalNumber());
 	}
 
     /**

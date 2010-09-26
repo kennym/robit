@@ -130,21 +130,19 @@ public class GamePanel extends javax.swing.JPanel {
     }
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
-        if (generador.getStep() > 7) {
+        generador.yes();
+        if (generador.getStep() > 6) {
             desactivarBotones();
         }
-        generador.yes();
         canvas1.repaint();
-        generador.incrementStep();
 }//GEN-LAST:event_btnSiActionPerformed
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
-        if (generador.getStep() > 7) {
+        generador.no();
+        if (generador.getStep() > 6) {
             desactivarBotones();
         }
-        generador.no();
         canvas1.repaint();
-        generador.incrementStep();
 }//GEN-LAST:event_btnNoActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed

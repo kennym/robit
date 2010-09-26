@@ -63,7 +63,7 @@ public class GameCanvas extends Canvas {
         FontMetrics fm = g.getFontMetrics();
         
         String mensaje = "Tu número imaginario fué: ";
-        String numero  = generador.getFinalNumber();
+        String numero  = String.valueOf(generador.getFinalNumber());
 
         g.setFont(F_Texto);
         g.drawString(mensaje,
