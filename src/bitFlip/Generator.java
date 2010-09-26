@@ -33,8 +33,11 @@ public class Generator {
     }
 
     /**
-     * No hay guerra de clonajes aquí!!! Entendido?!
+     * No Clone Wars (TM) here, aye sir!? :-)
      *
+     * Don't permit that our Singleton to be cloned elsewhere, so throw
+     * a CloneNotSupportedException.
+     * 
      * @return
      * @throws CloneNotSupportedException
      */
@@ -43,23 +46,19 @@ public class Generator {
     }
 
 	/**
-	 * Generate the numbers.
-	 *
-	 * TODO: Document this method.
+	 * Generate the numbers to be displayed on the screen.
 	 *
 	 * @return ArrayList
+     * @author Kenny Meyer <knny.myer@gmail.com>
 	 */
     public synchronized ArrayList generateNumbers() {
 
         ArrayList numbers = new ArrayList();
         for (int j = 1; j < this.max_number ; j++) {
-            if (((j & 1 << this.step_number) <= 0) || (this.random_bit == 0)) {
-                if ((j & 1 << this.step_number) != 0) {
+            if (((j & 1 << this.step_number) <= 0) || (this.random_bit != 1)) {
+                if (((j & 1 << this.step_number) != 0) || (this.random_bit == 1)) {
                     // Añadir 0 a nuestra lista y continuar con el próximo
                     // numero.
-                    numbers.add(0);
-                    continue;
-                } else if (this.random_bit == 1) {
                     numbers.add(0);
                     continue;
                 }
@@ -72,11 +71,19 @@ public class Generator {
         return numbers;
     }
 
-	/**
-	 * Gets called once the imaginary number is in the ArrayList of the
-	 * `Generator.generateNumbers` method.
-	 */
+    /**
+     * Yes, the number is in the ArrayList.
+     * 
+     * This is the whole logic part.
+     * 
+     * Get the value of the random_bit, to know which numbers are being displayed,
+     * and then by knowing this number you know that when random_bit equals
+     * 1, the number is in the list shown.
+     * Therefore add the power of 2 by the step_number to the final result.
+     */
 	public void yes() {
+        // The same instruction, just less readable (in my humble opinion)
+        //this.final_number += ((this.random_bit == 0) ? 1 << this.step_number : 0);
         if (this.random_bit == 1) {
             this.final_number += (1 << this.step_number);
         }
@@ -84,9 +91,13 @@ public class Generator {
     }
 
     /**
-     *
+     * No, the number is not in the list.
+     * 
+     * See the yes() method for documentation, because they're very similar.
      */
 	public void no() {
+        // The same instruction, just less readable (in my humble opinion)
+        //this.final_number += ((this.random_bit == 0) ? 1 << this.step_number : 0);
 		if (this.random_bit == 0) {
 		    this.final_number += (1 << this.step_number);
         }
@@ -187,6 +198,11 @@ public class Generator {
     }
 }
 
+/**
+ * Test our fucking generator.
+ * 
+ * @author Kenny Meyer
+ */
 class Main {
 
 	private static int iteration = 1;

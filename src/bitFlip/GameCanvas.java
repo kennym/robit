@@ -32,7 +32,7 @@ public class GameCanvas extends Canvas {
      */
     public GameCanvas() {
         // Set the size and the background color
-        setPreferredSize(new Dimension(500, 500));
+        setSize(new Dimension(300, 400));
         setBackground(Color.WHITE);
     }
 
@@ -88,7 +88,7 @@ public class GameCanvas extends Canvas {
 
 //        if (this.estado_inicio) {
 //            mostrarPantallaInicial(g);
-        if (generador.getStep() > 5) {
+        if (generador.getStep() > 6) {
            mostrarNumeroFinal(g);
         } else {
             // Determinar la fuente de la letra que se va a dibujar en el Canvas
