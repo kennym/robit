@@ -45,12 +45,12 @@ public class Generator {
         throw new CloneNotSupportedException();
     }
 
-	/**
-	 * Generate the numbers to be displayed on the screen.
-	 *
-	 * @return ArrayList
+    /**
+     * Generate the numbers to be displayed on the screen.
+     *
+     * @return ArrayList
      * @author Kenny Meyer <knny.myer@gmail.com>
-	 */
+     */
     public synchronized ArrayList generateNumbers() {
 
         ArrayList numbers = new ArrayList();

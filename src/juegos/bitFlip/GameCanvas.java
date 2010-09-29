@@ -36,9 +36,9 @@ public class GameCanvas extends Canvas {
         setBackground(Color.WHITE);
     }
 
-//    public void repaint(Graphics g) {
-//        paint(g);
-//    }
+    //    public void repaint(Graphics g) {
+    //        paint(g);
+    //    }
 
     /**
      * Mostrar el diálogo incial del juego.
@@ -86,8 +86,8 @@ public class GameCanvas extends Canvas {
         g.clearRect(0, 0, getWidth(), getHeight());
         g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
 
-//        if (this.estado_inicio) {
-//            mostrarPantallaInicial(g);
+        //if (this.estado_inicio) {
+        //    mostrarPantallaInicial(g);
         if (generador.getStep() > 6) {
            mostrarNumeroFinal(g);
         } else {
