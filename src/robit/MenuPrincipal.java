@@ -134,7 +134,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void btnBitFlipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBitFlipActionPerformed
         // Llamar al cuadro del juego BitFlip.
         // Reemplazar el contenido del panel principal.
-        bitFlip.GamePanel bitFlip = new bitFlip.GamePanel();
+        juegos.bitFlip.GamePanel bitFlip = new juegos.bitFlip.GamePanel();
         panelPrincipal.add(bitFlip);
         pack();
     }//GEN-LAST:event_btnBitFlipActionPerformed

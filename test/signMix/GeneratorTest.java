@@ -1,4 +1,8 @@
-package signMix;;
+package signMix;
+
+import juegos.signMix.Generator;
+
+;
 
 import java.util.ArrayList;
 import org.junit.After;

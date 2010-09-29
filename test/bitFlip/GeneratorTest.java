@@ -5,6 +5,7 @@
 
 package bitFlip;
 
+import juegos.bitFlip.Generator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,8 +16,9 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 /**
- *
- * @author kenny
+ * The tests for the bitFlip.Generator.
+ * 
+ * @author Kenny Meyer <knny.myer@gmail.com>
  */
 public class GeneratorTest {
 
