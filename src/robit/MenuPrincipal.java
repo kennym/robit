@@ -9,19 +9,44 @@ package robit;
  * el usuario primero hace llama a este objeto.
  *
  */
-import robit.DialogoCreditos;
 import java.awt.Dialog;
-import java.awt.Frame;
+import java.awt.Color;
+import java.awt.Graphics;
 
+import lib.Picture;
+
+import javax.swing.JLabel;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 
 public class MenuPrincipal extends javax.swing.JFrame {
+    String archivoRobitFeliz = "data/robit/feliz.png";
+    String archivoRobitBitFlip = "data/robit/bitFlip.png";
+
+    JPanel subPanel = new JPanel();
+
+    JLabel bienvenidos = new Picture(archivoRobitFeliz).getJLabel();
+    JLabel robitBitFlipLabel = new Picture(this.archivoRobitBitFlip).getJLabel();
+
+    juegos.bitFlip.GamePanel bitFlip = new juegos.bitFlip.GamePanel();
 
     /** Creates new form MenuPrincipal */
     public MenuPrincipal() {
         initComponents();
+        init();
+    }
+
+    public void init() {
+        this.subPanel.add(this.bienvenidos);
+        this.subPanel.add(this.robitBitFlipLabel);
+        this.robitBitFlipLabel.setVisible(false);
+
+        panelPrincipal.add(this.subPanel);
+        panelPrincipal.add(bitFlip);
+        bitFlip.setVisible(false);
+        pack();
     }
 
     /** This method is called from within the constructor to
@@ -63,6 +88,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnBitFlip.setText("BitFlip");
         btnBitFlip.setMaximumSize(new java.awt.Dimension(100, 100));
         btnBitFlip.setMinimumSize(new java.awt.Dimension(100, 100));
+        btnBitFlip.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBitFlipMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBitFlipMouseEntered(evt);
+            }
+        });
         btnBitFlip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBitFlipActionPerformed(evt);
@@ -134,8 +167,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void btnBitFlipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBitFlipActionPerformed
         // Llamar al cuadro del juego BitFlip.
         // Reemplazar el contenido del panel principal.
-        juegos.bitFlip.GamePanel bitFlip = new juegos.bitFlip.GamePanel();
-        panelPrincipal.add(bitFlip);
+        this.subPanel.setVisible(false);
+        this.bitFlip.setVisible(true);
         pack();
     }//GEN-LAST:event_btnBitFlipActionPerformed
 
@@ -148,6 +181,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         DialogoCreditos creditos = new DialogoCreditos(this, false);
         creditos.setVisible(true);
     }//GEN-LAST:event_btnCreditosActionPerformed
+
+    private void btnBitFlipMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitFlipMouseEntered
+        this.bienvenidos.setVisible(false);
+        this.robitBitFlipLabel.setVisible(true);
+        this.validate();
+    }//GEN-LAST:event_btnBitFlipMouseEntered
+
+    private void btnBitFlipMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitFlipMouseExited
+        this.robitBitFlipLabel.setVisible(false);
+        this.bienvenidos.setVisible(true);
+        this.validate();
+    }//GEN-LAST:event_btnBitFlipMouseExited
 
     /**
     * @param args the command line arguments
@@ -169,11 +214,4 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelPrincipal;
     // End of variables declaration//GEN-END:variables
 
-}
-
-class Creditos extends JDialog {
-    Creditos(JFrame frame, String titulo) {
-        setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-
-    }
 }

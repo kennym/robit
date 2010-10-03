@@ -2,19 +2,13 @@ package lib;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 import javax.swing.JLabel;
-import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
-import javax.swing.KeyStroke;
-import java.awt.FileDialog;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImageOp;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -35,8 +29,9 @@ import java.net.URL;
  * <i>Introduction to Programming in Java: An Interdisciplinary Approach</i>
  * by Robert Sedgewick and Kevin Wayne.
  */
-public final class Picture implements ActionListener {
+public final class Picture {
 
+    private BufferedImageOp op;
     private BufferedImage image; // the rasterized image
     private JFrame frame; // on-screen view
     private String filename; // name of file
@@ -112,6 +107,13 @@ public final class Picture implements ActionListener {
         return new JLabel(icon);
     }
 
+    public Image getImage() {
+        if (image == null) {
+            return null;
+        }
+        return image;
+    }
+
     /**
      * Set the origin to be the upper left pixel.
      */
@@ -124,40 +126,6 @@ public final class Picture implements ActionListener {
      */
     public void setOriginLowerLeft() {
         isOriginUpperLeft = false;
-    }
-
-    /**
-     * Display the picture in a window on the screen.
-     */
-    public void show() {
-
-        // create the GUI for viewing the image if needed
-        if (frame == null) {
-            frame = new JFrame();
-
-            JMenuBar menuBar = new JMenuBar();
-            JMenu menu = new JMenu("File");
-            menuBar.add(menu);
-            JMenuItem menuItem1 = new JMenuItem(" Save... ");
-            menuItem1.addActionListener(this);
-            menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
-                    Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-            menu.add(menuItem1);
-            frame.setJMenuBar(menuBar);
-
-
-
-            frame.setContentPane(getJLabel());
-            // f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setTitle(filename);
-            frame.setResizable(false);
-            frame.pack();
-            frame.setVisible(true);
-        }
-
-        // draw
-        frame.repaint();
     }
 
     /**
@@ -226,27 +194,5 @@ public final class Picture implements ActionListener {
         } else {
             System.out.println("Error: filename must end in .jpg or .png");
         }
-    }
-
-    /**
-     * Opens a save dialog box when the user selects "Save As" from the menu.
-     */
-    public void actionPerformed(ActionEvent e) {
-        FileDialog chooser = new FileDialog(frame,
-                "Use a .png or .jpg extension", FileDialog.SAVE);
-        chooser.setVisible(true);
-        if (chooser.getFile() != null) {
-            save(chooser.getDirectory() + File.separator + chooser.getFile());
-        }
-    }
-
-    /**
-     * Test client. Reads a picture specified by the command-line argument,
-     * and shows it in a window on the screen.
-     */
-    public static void main(String[] args) {
-        Picture pic = new Picture(args[0]);
-        System.out.printf("%d-by-%d\n", pic.width(), pic.height());
-        pic.show();
     }
 }
