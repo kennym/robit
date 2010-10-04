@@ -9,15 +9,9 @@ package robit;
  * el usuario primero hace llama a este objeto.
  *
  */
-import java.awt.Dialog;
-import java.awt.Color;
-import java.awt.Graphics;
-
 import lib.Picture;
 
 import javax.swing.JLabel;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
