@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 
 import java.util.ArrayList;
 
@@ -24,9 +25,7 @@ public class GameCanvas extends Canvas {
     private Dimension dimensionLocal;
 
     // Las fuentes del Canvas
-    private static Font F_Descripcion = new Font("SansSerif", Font.BOLD, 22);
     private static Font F_Grande = new Font("Arial", Font.BOLD, 60);
-    private static Font F_Texto = new Font("SansSerif", Font.PLAIN, 20);
     private static Font F_Numero = new Font("Sans", Font.BOLD, 18);
 
     private FontMetrics fm;
@@ -45,9 +44,14 @@ public class GameCanvas extends Canvas {
         this.estado_inicio = true;
     }
 
+    /**
+     * Modificar valor de <i>estado_incio</i>
+     * @param estado
+     */
     public void setEstadoIncio(boolean estado) {
         this.estado_inicio = estado;
     }
+
     /**
      * Mostrar el diálogo incial del juego.
      *
@@ -55,11 +59,12 @@ public class GameCanvas extends Canvas {
      */
     public void mostrarPantallaInicial(Graphics g) {
         // Dibujar Robit.
-        String mensaje = "Welcome!";
-        g.drawString(mensaje,
-            (dimensionLocal.width - fm.stringWidth(mensaje)) / 2,
-            dimensionLocal.height / 2);
-        this.estado_inicio = false;
+        Image image = new Picture("data/robit/bitFlipInstrucciones.png").getImage();
+
+        g.drawImage(image,
+            (dimensionLocal.width - image.getWidth(null)) / 2,
+            dimensionLocal.height - image.getHeight(null),
+            this);
     }
 
     /**
@@ -70,27 +75,42 @@ public class GameCanvas extends Canvas {
     public void mostrarNumeroFinal(Graphics g2) {
         Graphics2D g = (Graphics2D)(g2);
         
-        String mensaje = "Tu número imaginario fué: ";
         String numero  = String.valueOf(generador.getFinalNumber());
 
-        g.drawImage(new Picture("data/robit/feliz.png").getImage(),
-                0,
-                0,
-                this);
-        g.setFont(F_Texto);
-        g.drawString(mensaje,
-                // Desplegar el mensaje en el centro.
-                // (Anchura - mensaje) / 2
-                (dimensionLocal.width - fm.stringWidth(mensaje)) / 2,
-                (dimensionLocal.height / 2));
+        Image image1 = new Picture("data/robit/bitFlipResultado.png").getImage();
+        Image image2 = new Picture("data/robit/bitFlipCabeza.png").getImage();
+
         g.setFont(F_Grande);
+        g.drawImage(image1,
+            (dimensionLocal.width - image1.getWidth(null)) / 2,
+            (dimensionLocal.height / 2) + fm.getAscent() - 50 ,
+            this);
+        g.drawImage(image2,
+            (dimensionLocal.width - image2.getWidth(null)) / 2,
+            (dimensionLocal.height / 2) + fm.getAscent() - 200 ,
+            this);
+
         g.drawString(numero,
-                (dimensionLocal.width - fm.stringWidth(numero)) / 2,
+                dimensionLocal.width / 2 - fm.stringWidth(numero),
                 // Un 50 px más debajo del centro del canvas menos la altura
                 // de la fuente, porque en el centro se encuentra el mensaje
                 // anterior.
                 (dimensionLocal.height / 2) + fm.getAscent() + 50);
-        this.estado_inicio = true;
+    }
+
+    public void _determinarColorDeFondo(Graphics g) {
+        // LATTE MACCHIATO:
+        // Mostrar colores inversos de acuerdo al paso
+        // Si estamos en el primer, tercero, quinto paso mostrar un
+        // canvas negro con letra blanca.
+        // Sino, mostrar un canvas blanco con letra negra.
+        if ((generador.getStep() % 2 == 0) && (generador.getStep() < 6)) {
+            setBackground(Color.BLACK);
+            g.setColor(Color.white);
+        } else {
+            setBackground(Color.WHITE);
+            g.setColor(Color.black);
+        }
     }
 
     @Override
@@ -101,6 +121,8 @@ public class GameCanvas extends Canvas {
 
         fm = g.getFontMetrics();
 
+        _determinarColorDeFondo(g);
+
         if (this.estado_inicio == true) {
             mostrarPantallaInicial(g);
         } else if (generador.getStep() > 6) {
@@ -109,19 +131,6 @@ public class GameCanvas extends Canvas {
             // Determinar la fuente de la letra que se va a dibujar en el Canvas
             g.setFont(F_Numero);
             FontMetrics fm = g.getFontMetrics();
-
-            // LATTE MACCHIATO:
-            // Mostrar colores inversos de acuerdo al paso
-            // Si estamos en el primer, tercero, quinto paso mostrar un
-            // canvas negro con letra blanca.
-            // Sino, mostrar un canvas blanco con letra negra.
-            if ((generador.getStep() % 2 == 0) && (generador.getStep() < 6)) {
-                setBackground(Color.BLACK);
-                g.setColor(Color.white);
-            } else {
-                setBackground(Color.WHITE);
-                g.setColor(Color.black);
-            }
 
             // Generar una nueva serie de numeros.
             ArrayList numeros = generador.generateNumbers();

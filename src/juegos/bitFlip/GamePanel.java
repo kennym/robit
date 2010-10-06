@@ -122,11 +122,13 @@ public class GamePanel extends javax.swing.JPanel {
     private void desactivarBotones() {
         btnSi.setEnabled(false);
         btnNo.setEnabled(false);
+        btnReset.setText("Jugar nuevamente!");
     }
 
     private void activarBotones() {
         btnSi.setEnabled(true);
         btnNo.setEnabled(true);
+        btnReset.setText("Reset");
     }
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
