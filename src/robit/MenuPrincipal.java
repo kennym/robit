@@ -63,6 +63,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         signMix.setVisible(false);
         pack();
     }
+    
+    public void ocultarControles() {
+        if (this.bitFlip.isVisible()) {
+            bitFlip.setVisible(false);
+        }
+
+        if (this.signMix.isVisible()) {
+            signMix.setVisible(false);
+        }
+    }
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -217,6 +228,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Llamar al cuadro del juego BitFlip.
         // Reemplazar el contenido del panel principal.
         this.subPanel.setVisible(false);
+        ocultarControles();
         this.bitFlip.setVisible(true);
         pack();
     }//GEN-LAST:event_btnBitFlipActionPerformed
@@ -261,6 +273,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Llamar al panel del juego SignMix.
         // Reemplazar el contenido del panel principal.
         this.subPanel.setVisible(false);
+        ocultarControles();
         this.signMix.setVisible(true);
         pack();
     }//GEN-LAST:event_btnSignMixActionPerformed
