@@ -16,30 +16,45 @@ import javax.swing.JPanel;
 
 
 public class MenuPrincipal extends javax.swing.JFrame {
-    String archivoRobitFeliz = "data/robit/feliz.png";
-    String archivoRobitBitFlip = "data/robit/bitFlip.png";
+    String archivoRobitFeliz    = "data/robit/feliz.png";
+    String archivoRobitBitFlip  = "data/robit/bitFlip.png";
+    String archivoRobitSignMix  = "data/robit/signMix.png";
 
     JPanel subPanel = new JPanel();
 
-    JLabel bienvenidos = new Picture(archivoRobitFeliz).getJLabel();
-    JLabel robitBitFlipLabel = new Picture(this.archivoRobitBitFlip).getJLabel();
+    JLabel robitBienvenidos  = new Picture(archivoRobitFeliz).getJLabel();
+    JLabel robitBitFlipLabel = new Picture(archivoRobitBitFlip).getJLabel();
+    JLabel robitSignMixLabel = new Picture(archivoRobitSignMix).getJLabel();
 
+    // Instancias de nuestros juegos.
     juegos.bitFlip.GamePanel bitFlip = new juegos.bitFlip.GamePanel();
+    juegos.signMix.SignMixPanel signMix = new juegos.signMix.SignMixPanel();
 
-    /** Creates new form MenuPrincipal */
+    /**
+     * El inicializador (...y el TERMINATOR?)
+     */
     public MenuPrincipal() {
         initComponents();
         init();
     }
 
+    /**
+     * Arreglar los elementos en la ventana.
+     */
     public void init() {
-        this.subPanel.add(this.bienvenidos);
+        this.subPanel.add(this.robitBienvenidos);
         this.subPanel.add(this.robitBitFlipLabel);
+        this.subPanel.add(this.robitSignMixLabel);
         this.robitBitFlipLabel.setVisible(false);
+        this.robitSignMixLabel.setVisible(false);
 
         panelPrincipal.add(this.subPanel);
         panelPrincipal.add(bitFlip);
+        // Añadir bitFlip al panel
         bitFlip.setVisible(false);
+        // Añadir signMix al panel
+        panelPrincipal.add(signMix);
+        signMix.setVisible(false);
         pack();
     }
 
@@ -58,6 +73,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnBitFlip = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btnCreditos = new javax.swing.JButton();
+        btnSignMix = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -110,6 +126,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnSignMix.setText("SignMix");
+        btnSignMix.setMaximumSize(new java.awt.Dimension(100, 100));
+        btnSignMix.setMinimumSize(new java.awt.Dimension(100, 100));
+        btnSignMix.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSignMixMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSignMixMouseEntered(evt);
+            }
+        });
+        btnSignMix.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignMixActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -119,7 +152,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                     .addComponent(btnBitFlip, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(btnCreditos, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                    .addComponent(btnCreditos, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(btnSignMix, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -127,7 +161,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addComponent(btnBitFlip, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSignMix, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                 .addComponent(btnCreditos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalir)
@@ -177,16 +213,36 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreditosActionPerformed
 
     private void btnBitFlipMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitFlipMouseEntered
-        this.bienvenidos.setVisible(false);
+        this.robitBienvenidos.setVisible(false);
         this.robitBitFlipLabel.setVisible(true);
         this.validate();
     }//GEN-LAST:event_btnBitFlipMouseEntered
 
     private void btnBitFlipMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitFlipMouseExited
         this.robitBitFlipLabel.setVisible(false);
-        this.bienvenidos.setVisible(true);
+        this.robitBienvenidos.setVisible(true);
         this.validate();
     }//GEN-LAST:event_btnBitFlipMouseExited
+
+    private void btnSignMixMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignMixMouseExited
+        this.robitSignMixLabel.setVisible(false);
+        this.robitBienvenidos.setVisible(true);
+        this.validate();
+    }//GEN-LAST:event_btnSignMixMouseExited
+
+    private void btnSignMixMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignMixMouseEntered
+        this.robitBienvenidos.setVisible(false);
+        this.robitSignMixLabel.setVisible(true);
+        this.validate();
+    }//GEN-LAST:event_btnSignMixMouseEntered
+
+    private void btnSignMixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignMixActionPerformed
+        // Llamar al panel del juego SignMix.
+        // Reemplazar el contenido del panel principal.
+        this.subPanel.setVisible(false);
+        this.signMix.setVisible(true);
+        pack();
+    }//GEN-LAST:event_btnSignMixActionPerformed
 
     /**
     * @param args the command line arguments
@@ -203,6 +259,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnBitFlip;
     private javax.swing.JButton btnCreditos;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnSignMix;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel panelPrincipal;
