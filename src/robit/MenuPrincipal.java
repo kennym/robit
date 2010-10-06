@@ -10,6 +10,7 @@ package robit;
  *
  */
 import lib.Picture;
+import lib.Sonido;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,14 +18,16 @@ import javax.swing.JPanel;
 
 public class MenuPrincipal extends javax.swing.JFrame {
     String archivoRobitFeliz    = "data/robit/feliz.png";
+    String archivoRobitTriste   = "data/robit/triste.png";
     String archivoRobitBitFlip  = "data/robit/bitFlip.png";
     String archivoRobitSignMix  = "data/robit/signMix.png";
 
     JPanel subPanel = new JPanel();
 
-    JLabel robitBienvenidos  = new Picture(archivoRobitFeliz).getJLabel();
-    JLabel robitBitFlipLabel = new Picture(archivoRobitBitFlip).getJLabel();
-    JLabel robitSignMixLabel = new Picture(archivoRobitSignMix).getJLabel();
+    JLabel robitBienvenidos  = new Picture(archivoRobitFeliz)   .getJLabel();
+    JLabel robitTristeLabel  = new Picture(archivoRobitTriste)  .getJLabel();
+    JLabel robitBitFlipLabel = new Picture(archivoRobitBitFlip) .getJLabel();
+    JLabel robitSignMixLabel = new Picture(archivoRobitSignMix) .getJLabel();
 
     // Instancias de nuestros juegos.
     juegos.bitFlip.GamePanel bitFlip = new juegos.bitFlip.GamePanel();
@@ -43,8 +46,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public void init() {
         this.subPanel.add(this.robitBienvenidos);
+        this.subPanel.add(this.robitTristeLabel);
         this.subPanel.add(this.robitBitFlipLabel);
         this.subPanel.add(this.robitSignMixLabel);
+
+        this.robitTristeLabel.setVisible(false);
         this.robitBitFlipLabel.setVisible(false);
         this.robitSignMixLabel.setVisible(false);
 
@@ -113,6 +119,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         btnSalir.setText("Salir");
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+        });
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -120,6 +134,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         btnCreditos.setText("Créditos");
+        btnCreditos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCreditosMouseEntered(evt);
+            }
+        });
         btnCreditos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreditosActionPerformed(evt);
@@ -216,6 +235,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.robitBienvenidos.setVisible(false);
         this.robitBitFlipLabel.setVisible(true);
         this.validate();
+        Sonido.reproducirSonidoHover();
     }//GEN-LAST:event_btnBitFlipMouseEntered
 
     private void btnBitFlipMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitFlipMouseExited
@@ -234,6 +254,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.robitBienvenidos.setVisible(false);
         this.robitSignMixLabel.setVisible(true);
         this.validate();
+        Sonido.reproducirSonidoHover();
     }//GEN-LAST:event_btnSignMixMouseEntered
 
     private void btnSignMixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignMixActionPerformed
@@ -243,6 +264,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.signMix.setVisible(true);
         pack();
     }//GEN-LAST:event_btnSignMixActionPerformed
+
+    private void btnCreditosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCreditosMouseEntered
+        Sonido.reproducirSonidoHover();
+    }//GEN-LAST:event_btnCreditosMouseEntered
+
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+        this.robitBienvenidos.setVisible(false);
+        this.robitTristeLabel.setVisible(true);
+        Sonido.reproducirSonidoHover();
+    }//GEN-LAST:event_btnSalirMouseEntered
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+        this.robitTristeLabel.setVisible(false);
+        this.robitBienvenidos.setVisible(true);
+        Sonido.reproducirSonidoHover();
+    }//GEN-LAST:event_btnSalirMouseExited
 
     /**
     * @param args the command line arguments

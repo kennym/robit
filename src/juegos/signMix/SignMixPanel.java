@@ -1,7 +1,10 @@
 package juegos.signMix;
 
 import java.util.ArrayList;
+import java.awt.Image;
 import javax.swing.*;
+
+import lib.Picture;
 
 /**
  *
@@ -14,18 +17,47 @@ public class SignMixPanel extends javax.swing.JPanel {
 
     private Generator generador = new Generator();
     private ArrayList<String> numeros = new ArrayList<String>();
+    
+    JLabel caraFeliz = new Picture("data/robit/signMix/feliz.png").getJLabel();
+    JLabel caraMuyFeliz = new Picture("data/robit/signMix/muyFeliz.png").getJLabel();
+    JLabel caraEnojada = new Picture("data/robit/signMix/enojado.png").getJLabel();
+    JLabel caraTriste = new Picture("data/robit/signMix/triste.png").getJLabel();
+    JLabel caraMasTriste = new Picture("data/robit/signMix/mastriste.png").getJLabel();
 
-    private Timer timer;
-    /* El nivel del juego
+
+    /**
+     * El nivel del juego
      *
      * De acuerdo al nivel se mostrarán más etiquetas y entradas de texto.
      */
     private int nivel = 1;
 
+    private int vecesIntentadas = 0;
+
     /** Creates new form SignMixFrame */
     public SignMixPanel() {
         initComponents();
+        init();
         reset();
+    }
+
+    private void init() {
+        robitPanel.add(caraFeliz);
+        robitPanel.add(caraMuyFeliz);
+        robitPanel.add(caraEnojada);
+        robitPanel.add(caraTriste);
+        robitPanel.add(caraMasTriste);
+        caraFeliz.setVisible(false);
+        caraEnojada.setVisible(false);
+        caraTriste.setVisible(false);
+        caraMasTriste.setVisible(false);
+        caraMuyFeliz.setVisible(false);
+    }
+
+    private void llenarEspacios() {
+        etiPrimer   .setText(this.numeros.get(0));
+        etiSegundo  .setText(this.numeros.get(2));
+        etiResultado.setText(this.numeros.get(3));
     }
 
     private void reset() {
@@ -34,9 +66,7 @@ public class SignMixPanel extends javax.swing.JPanel {
         this.numeros = generador.generarProblema(this.nivel);
         // Reemplazar los controles de la ventana.
         vaciarSignos();
-        etiPrimer   .setText(this.numeros.get(0));
-        etiSegundo  .setText(this.numeros.get(2));
-        etiResultado.setText(this.numeros.get(3));
+        llenarEspacios();
         // Ocultar los controles de los niveles superior a 1
         etiTercerNumero.setVisible(false);
         etiCuartoNumero.setVisible(false);
@@ -51,6 +81,8 @@ public class SignMixPanel extends javax.swing.JPanel {
      */
     public void subirNivel() {
         incrementarNivel();
+        mostrarRobitFeliz();
+        resetearMalasVeces();
         if ( this.nivel == 2 ) {
             this.numeros = generador.generarProblema(2);
 
@@ -81,9 +113,7 @@ public class SignMixPanel extends javax.swing.JPanel {
              etiMensaje     .setText("correcto!!! pasaste al siguiente nivel");
          } else {
              etiMensaje .setText("Ganaste!!!!felicidades!!");
-             jPanel1    .remove(jPanel4);
-             Felicidades feliz = new Felicidades();
-             jPanel1    .add(feliz);
+             mostrarRobitMuyFeliz();
          }
     }
 
@@ -113,6 +143,38 @@ public class SignMixPanel extends javax.swing.JPanel {
         this.nivel = 1;
     }
 
+    public void aumentarMalasVeces() {
+        this.vecesIntentadas++;
+        this.caraFeliz.setVisible(false);
+        this.caraTriste.setVisible(false);
+        this.caraMasTriste.setVisible(false);
+        if (this.vecesIntentadas == 2){
+            this.caraMasTriste.setVisible(true);
+        } else if (this.vecesIntentadas > 2) {
+            this.caraEnojada.setVisible(true);
+        } else {
+            this.caraTriste.setVisible(true);
+        }
+    }
+
+    public void resetearMalasVeces() {
+        this.vecesIntentadas = 0;
+    }
+
+    public void mostrarRobitFeliz() {
+        this.caraEnojada.setVisible(false);
+        this.caraTriste.setVisible(false);
+        this.caraMasTriste.setVisible(false);
+        this.caraFeliz.setVisible(true);
+    }
+
+    public void mostrarRobitMuyFeliz() {
+        this.caraEnojada.setVisible(false);
+        this.caraTriste.setVisible(false);
+        this.caraMasTriste.setVisible(false);
+        this.caraFeliz.setVisible(false);
+        this.caraMuyFeliz.setVisible(true);
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -121,6 +183,7 @@ public class SignMixPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel2 = new javax.swing.JPanel();
         etiMensaje = new javax.swing.JLabel();
@@ -138,13 +201,12 @@ public class SignMixPanel extends javax.swing.JPanel {
         etiCuartoNumero = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         etiResultado = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        progTiempo = new javax.swing.JProgressBar();
+        robitPanel = new javax.swing.JPanel();
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        etiMensaje.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         etiMensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiMensaje.setText("El mensaje a desplegar...");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -152,7 +214,7 @@ public class SignMixPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(etiMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+                .addComponent(etiMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -162,8 +224,6 @@ public class SignMixPanel extends javax.swing.JPanel {
                 .addComponent(etiMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
         btnOk.setText("OK");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +239,7 @@ public class SignMixPanel extends javax.swing.JPanel {
                 btnResetActionPerformed(evt);
             }
         });
+        jPanel3.add(btnReset);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
@@ -186,53 +247,50 @@ public class SignMixPanel extends javax.swing.JPanel {
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        etiPrimer.setText("PrimerNumero");
-        jPanel4.add(etiPrimer, new java.awt.GridBagConstraints());
+        etiPrimer.setFont(new java.awt.Font("Aurulent Sans", 0, 18)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        jPanel4.add(etiPrimer, gridBagConstraints);
 
         txtSigno1.setColumns(1);
         jPanel4.add(txtSigno1, new java.awt.GridBagConstraints());
 
-        etiSegundo.setText("SegundoNumero");
-        jPanel4.add(etiSegundo, new java.awt.GridBagConstraints());
+        etiSegundo.setFont(new java.awt.Font("Aurulent Sans", 0, 18)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        jPanel4.add(etiSegundo, gridBagConstraints);
 
         txtSigno2.setColumns(1);
         jPanel4.add(txtSigno2, new java.awt.GridBagConstraints());
 
-        etiTercerNumero.setText("TercerNumero");
-        jPanel4.add(etiTercerNumero, new java.awt.GridBagConstraints());
+        etiTercerNumero.setFont(new java.awt.Font("Aurulent Sans", 0, 18)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipadx = 10;
+        jPanel4.add(etiTercerNumero, gridBagConstraints);
 
         txtSigno3.setColumns(1);
         jPanel4.add(txtSigno3, new java.awt.GridBagConstraints());
 
-        etiCuartoNumero.setText("CuartoNumero");
-        jPanel4.add(etiCuartoNumero, new java.awt.GridBagConstraints());
+        etiCuartoNumero.setFont(new java.awt.Font("Aurulent Sans", 0, 18)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        jPanel4.add(etiCuartoNumero, gridBagConstraints);
 
+        jLabel3.setFont(new java.awt.Font("Aurulent Sans", 0, 18)); // NOI18N
         jLabel3.setText(" = ");
         jPanel4.add(jLabel3, new java.awt.GridBagConstraints());
 
-        etiResultado.setText("Resultado");
+        etiResultado.setFont(new java.awt.Font("Aurulent Sans", 0, 18)); // NOI18N
         jPanel4.add(etiResultado, new java.awt.GridBagConstraints());
 
         jPanel1.add(jPanel4);
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(progTiempo, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(progTiempo, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        robitPanel.setBackground(new java.awt.Color(254, 254, 254));
+        robitPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        robitPanel.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -241,13 +299,10 @@ public class SignMixPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(robitPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-                        .addGap(153, 153, 153)
-                        .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -256,16 +311,18 @@ public class SignMixPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(robitPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReset))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        reset();
+}//GEN-LAST:event_btnResetActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         /*
@@ -279,35 +336,26 @@ public class SignMixPanel extends javax.swing.JPanel {
         if ( nivel == 1 ) {
             if ( txtSigno1.getText().matches(masOMenos)) {
                 // Comparar el primer signo en la lista.
-                if (txtSigno1.getText().startsWith(
-                        this.generador.obtenerSigno(
-                            this.numeros.get(1)
-                            )
-                        )
-                    ) {
+                if (txtSigno1.getText().startsWith(this.generador.obtenerSigno(this.numeros.get(1)))) {
                     // El signo está correcto ...
                     etiMensaje.setText("Correcto! Sos un master!");
                     // y subir de nivel...
                     subirNivel();
                 } else {
                     etiMensaje.setText("No está correcto. Intentá de nuevo.");
+                    aumentarMalasVeces();
                 }
             } else {
                 etiMensaje.setText("Ingrese el signo + ó - !");
             }
-        } else if ( nivel==2 ) {
+        } else if ( nivel == 2 ) {
             if ( txtSigno1.getText().matches(masOMenos) &&
-                 txtSigno2.getText().matches(masOMenos)) {
+                    txtSigno2.getText().matches(masOMenos)) {
                 // Comparar el primer y segundo signo en la lista.
                 if (( txtSigno1.getText().startsWith(
-                        this.generador.obtenerSigno(
-                            this.numeros.get(1))) &&
+                        this.generador.obtenerSigno(this.numeros.get(1))) &&
                     ( txtSigno2.getText().startsWith(
-                        this.generador.obtenerSigno(
-                            this.numeros.get(3))
-                            )
-                        )
-                    )) {
+                        this.generador.obtenerSigno(this.numeros.get(3)))))) {
                     // El signo está correcto ...
                     etiMensaje.setText("Correcto! Sos un master!");
                     // y subir de nivel...
@@ -315,25 +363,26 @@ public class SignMixPanel extends javax.swing.JPanel {
 
                 } else {
                     etiMensaje.setText("No está correcto. Intentá de nuevo.");
+                    aumentarMalasVeces();
                 }
             } else {
                 etiMensaje.setText("Ingrese el signo + ó - !");
             }
         } else if ( nivel== 3 ) {
             if ( txtSigno1.getText().matches(masOMenos) &&
-                 txtSigno2.getText().matches(masOMenos) &&
-                 txtSigno3.getText().matches(masOMenos)) {
+                    txtSigno2.getText().matches(masOMenos) &&
+                    txtSigno3.getText().matches(masOMenos)) {
                 // Comparar el primer, segundo y tercer signo en la lista.
                 if (( txtSigno1.getText().startsWith(
                         this.generador.obtenerSigno(
-                            this.numeros.get(1)))) &&
+                        this.numeros.get(1)))) &&
                     ( txtSigno2.getText().startsWith(
                         this.generador.obtenerSigno(
-                            this.numeros.get(3)))) &&
+                        this.numeros.get(3)))) &&
                     ( txtSigno3.getText().startsWith(
                         this.generador.obtenerSigno(
-                            this.numeros.get(5))))
-                    ) {
+                        this.numeros.get(5)))
+                    )) {
                     // Los signos se ha puestos correctamente
                     etiMensaje.setText("Correcto! Sos un master!");
                     // y subir de nivel...
@@ -341,16 +390,13 @@ public class SignMixPanel extends javax.swing.JPanel {
 
                 } else {
                     etiMensaje.setText("No está correcto. Intentá de nuevo.");
+                    aumentarMalasVeces();
                 }
             } else {
                 etiMensaje.setText("Ingrese el signo + ó - !");
             }
         }
 }//GEN-LAST:event_btnOkActionPerformed
-
-    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        reset();
-}//GEN-LAST:event_btnResetActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -367,8 +413,7 @@ public class SignMixPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JProgressBar progTiempo;
+    private javax.swing.JPanel robitPanel;
     private javax.swing.JTextField txtSigno1;
     private javax.swing.JTextField txtSigno2;
     private javax.swing.JTextField txtSigno3;
