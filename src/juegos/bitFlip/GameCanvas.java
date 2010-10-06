@@ -63,7 +63,7 @@ public class GameCanvas extends Canvas {
 
         g.drawImage(image,
             (dimensionLocal.width - image.getWidth(null)) / 2,
-            dimensionLocal.height - image.getHeight(null),
+            dimensionLocal.height - image.getHeight(null) - 1,
             this);
     }
 
