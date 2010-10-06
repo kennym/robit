@@ -29,6 +29,8 @@ public class GameCanvas extends Canvas {
     private static Font F_Texto = new Font("SansSerif", Font.PLAIN, 20);
     private static Font F_Numero = new Font("Sans", Font.BOLD, 18);
 
+    private FontMetrics fm;
+
     /**
      * Initializer of NumberBoard
      */
@@ -37,15 +39,26 @@ public class GameCanvas extends Canvas {
     }
 
     /**
+     * Volver al estado incial.
+     */
+    public void resetearEstado() {
+        this.estado_inicio = true;
+    }
+
+    public void setEstadoIncio(boolean estado) {
+        this.estado_inicio = estado;
+    }
+    /**
      * Mostrar el diálogo incial del juego.
      *
      * @param g
      */
-    public void mostrarPantallaInicial(Graphics2D g) {
+    public void mostrarPantallaInicial(Graphics g) {
         // Dibujar Robit.
-        g.drawString("Welcome!",
-                dimensionLocal.width / 2,
-                dimensionLocal.height / 2);
+        String mensaje = "Welcome!";
+        g.drawString(mensaje,
+            (dimensionLocal.width - fm.stringWidth(mensaje)) / 2,
+            dimensionLocal.height / 2);
         this.estado_inicio = false;
     }
 
@@ -56,7 +69,6 @@ public class GameCanvas extends Canvas {
      */
     public void mostrarNumeroFinal(Graphics g2) {
         Graphics2D g = (Graphics2D)(g2);
-        FontMetrics fm = g.getFontMetrics();
         
         String mensaje = "Tu número imaginario fué: ";
         String numero  = String.valueOf(generador.getFinalNumber());
@@ -78,6 +90,7 @@ public class GameCanvas extends Canvas {
                 // de la fuente, porque en el centro se encuentra el mensaje
                 // anterior.
                 (dimensionLocal.height / 2) + fm.getAscent() + 50);
+        this.estado_inicio = true;
     }
 
     @Override
@@ -86,10 +99,12 @@ public class GameCanvas extends Canvas {
         g.clearRect(0, 0, getWidth(), getHeight());
         g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
 
-        //if (this.estado_inicio) {
-        //    mostrarPantallaInicial(g);
-        if (generador.getStep() > 6) {
-           mostrarNumeroFinal(g);
+        fm = g.getFontMetrics();
+
+        if (this.estado_inicio == true) {
+            mostrarPantallaInicial(g);
+        } else if (generador.getStep() > 6) {
+            mostrarNumeroFinal(g);
         } else {
             // Determinar la fuente de la letra que se va a dibujar en el Canvas
             g.setFont(F_Numero);
