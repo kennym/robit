@@ -46,23 +46,24 @@ public class GeneratorTest {
      */
     @Test
     public void testGenerator() {
-        System.out.println("Generator");
         Generator instance = new Generator();
+        assertTrue(instance instanceof Generator);
     }
 
     /**
+     * TODO:
      * Test of generateNumbers method, of class Generator.
      */
-    @Test
-    public void testGenerateNumbersStep0() {
-        Generator instance = Generator.getInstance();
-        // Create an array for our numbers
-        ArrayList result    = instance.generateNumbers();
-        ArrayList expected  = new ArrayList();
-        
-        // Call our function and get the numbers stored in an array.
-        assertEquals(result, expected);
-    }
+//    @Test
+//    public void testGenerateNumbersStep0() {
+//        Generator instance = Generator.getInstance();
+//        // Create an array for our numbers
+//        ArrayList result    = instance.generateNumbers();
+//        ArrayList expected  = new ArrayList();
+//
+//        // Call our function and get the numbers stored in an array.
+//        assertEquals(result, expected);
+//    }
 
     @Test
     public void testGuessNumbers() {

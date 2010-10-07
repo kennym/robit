@@ -1,4 +1,4 @@
-package signMix;
+package signGuess;
 
 import juegos.signGuess.Generator;
 

@@ -48,7 +48,7 @@ figs-within-sections
 \begin_body
 
 \begin_layout Title
-ROBIT
+Proyecto: ROBIT
 \end_layout
 
 \begin_layout Author
@@ -83,8 +83,9 @@ target "http://robitweb.blogspot.com"
 \end_layout
 
 \begin_layout Abstract
-ROBIT tiene como objetivo plantear una serie de aplicaciones pequeñas para
- la diversión de los usuarios, y para desarrollar sus capacidades mentales.
+ROBIT tiene como objetivo plantear una serie de aplicaciones pequeñas libres
+ para todos para la diversión de los usuarios, y para desarrollar sus capacidade
+s mentales.
  La lógica de los juegos se basa en conceptos matemáticos conocidos y la
  parte programativa es desarrollado en Java.
 \begin_inset Newpage newpage
@@ -152,7 +153,7 @@ signGuess
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Integrantes
 \end_layout
 
@@ -161,7 +162,7 @@ Los integrantes del grupo que elaboraron el ROBIT son las siguientes, divididos
  en sub-grupos:
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Programación
 \end_layout
 
@@ -177,7 +178,7 @@ Kenny Meyer
 Jorge Giménez
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Sección artística y Diseño Gráfico
 \end_layout
 
@@ -193,7 +194,7 @@ Cristian Da Costa, por diseñar las pequeñas pero importantes cosas
 Kenny Meyer
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Presentación y Publicación
 \end_layout
 
@@ -225,8 +226,8 @@ ROBIT
 \emph on
 ROBIT
 \emph default
-, es un robot simpático cuyo sentido de existencia es divertirnos con sus
- juegos lógicos.
+, es un robot simpático e inteligente cuyo sentido de existencia es divertirnos
+ con sus juegos lógicos.
 \end_layout
 
 \begin_layout Standard
@@ -293,37 +294,6 @@ Es la unidad más chica utilizada para medir un dato de computadora.
 .
 \end_layout
 
-\begin_layout Subsection
-Lenguaje de programación
-\end_layout
-
-\begin_layout Standard
-Decidimos usar 
-\begin_inset CommandInset href
-LatexCommand href
-name "Java"
-target "http://es.wikipedia.org/wiki/Java_(programming_language)"
-
-\end_inset
-
- para nuestro proyecto.
- La elección fue relativamente facíl, por las siguientes razones:
-\end_layout
-
-\begin_layout Enumerate
-La documentación de Java es 
-\series bold
-inmensa
-\series default
- y ya existen librerías útiles, que facilitan y reducen el tiempo de desarrollo.
-\end_layout
-
-\begin_layout Enumerate
-Java se introdujo en nuestra materia específica de Informática en este año
- lectivo, que es una excelente oportunidad para aprender más de programación
- en Java.
-\end_layout
-
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
@@ -335,11 +305,11 @@ Java se introdujo en nuestra materia específica de Informática en este año
 Marco teórico
 \end_layout
 
-\begin_layout Section*
+\begin_layout Subsection
 Juegos
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 bitFlip
 \end_layout
 
@@ -360,7 +330,7 @@ girar los bits
 .
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph*
 Objetivo
 \end_layout
 
@@ -406,7 +376,7 @@ No
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph*
 La Lógica
 \end_layout
 
@@ -776,7 +746,8 @@ Sistema binario
 \end_layout
 
 \begin_layout Standard
-fd
+Los intervalos de los números de la esquina izquierda se basan en las potencias
+ de 2.
 \end_layout
 
 \begin_layout Standard
@@ -786,8 +757,15 @@ fd
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 SignGuess
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SignGuess"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -835,7 +813,7 @@ Adivina el Signo
 .
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph*
 Objetivo
 \end_layout
 
@@ -846,7 +824,7 @@ Es un juego sencillo para agilizar las habilidades de aritmética simple
 \end_layout
 
 \begin_layout Standard
-SignGuess se basa por niveles; el juego se reinicia cuando el jugador llega
+SignGuess se basa en niveles; el juego se reinicia cuando el jugador llega
  a terminar el tercer nivel.
 \end_layout
 
@@ -857,29 +835,215 @@ SignGuess se basa por niveles; el juego se reinicia cuando el jugador llega
 
 \end_layout
 
-\begin_layout Section
-Anexo
-\end_layout
-
 \begin_layout Subsection
-Licenciatura
+Programación
 \end_layout
 
 \begin_layout Standard
-ROBIT es licenciado bajo la GPLv2.1, que permite el uso, modificación, redistribu
-ción de ROBIT con la condición de hacerlo bajo esta licencia.
-\begin_inset Newline newline
+Decidimos usar 
+\begin_inset CommandInset href
+LatexCommand href
+name "Java"
+target "http://es.wikipedia.org/wiki/Java_(programming_language)"
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-Todos los imagenes pueden ser usadas bajo las condiciones de Creative Commons.
+ para nuestro proyecto.
+ La elección fue relativamente facíl, por las siguientes razones:
 \end_layout
 
-\begin_layout Subsection
-Contribución y desarrollo
+\begin_layout Enumerate
+La documentación de Java es 
+\series bold
+inmensa
+\series default
+ y ya existen librerías útiles, que facilitan y reducen el tiempo de desarrollo.
+\end_layout
+
+\begin_layout Enumerate
+Java se introdujo en nuestra materia específica de Informática en este año
+ lectivo, que es una excelente oportunidad para aprender más de programación
+ en Java.
+\end_layout
+
+\begin_layout Subsubsection
+Entorno de Desarrollo integrado
+\end_layout
+
+\begin_layout Standard
+Teníamos unas cuantas buenas experiencias con NetBeans
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://es.wikipedia.org/wiki/Netbeans
+\end_layout
+
+\end_inset
+
+ para programar aplicaciones de forma más rápida y conveniente, por lo cual
+ todo el desarrollo se ha hecho en NetBeans.
+ Por qué rápida? NetBeans ya provee muchas herramientas útiles de programación
+ que facilitan y agilizan el trabajo en Java (Editor con coloreado de sintaxis,
+ soporte para pruebas unitarias, perfilador de código, depurador, entre
+ muchos más...).
+\end_layout
+
+\begin_layout Subsubsection
+Pruebas unitarias (Unittests)
+\end_layout
+
+\begin_layout Standard
+Nuestro objetivo de la programación fue definir la lógica 
+\emph on
+antes
+\emph default
+ de escribir el programa.
+ Una de las formas es conceptuar todo el desarrollo en el papel, pero nosotros
+ hicímos más.
+ Nosotros definimos los resultados previstos en forma de pruebas para 
+\emph on
+cada
+\emph default
+ función (unidad) del programa.
+\end_layout
+
+\begin_layout Standard
+Para eso nos guíamos por el excelente y renombrado JUnit Framework.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://es.wikipedia.org/wiki/JUnit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Contribución y Desarrollo
+\end_layout
+
+\begin_layout Standard
+Todo el código fuente es publicado en GitHub
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://github.com/km0r3/robit/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ en un repositorio de control de versiones
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://es.wikipedia.org/wiki/Control_de_versiones
+\end_layout
+
+\end_inset
+
+ de Git
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://es.wikipedia.org/wiki/GIT
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para obtener el código primero se tiene que instalar Git, y despues se obtiene
+ un repositorio personal con el siguiente comando en una terminal Bash (de
+ un Sistema Operativo derivado de Linux):
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+git clone git@github.com:km0r3/robit.git
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los proximos pasos serían abrir el proyecto en NetBeans, aunque no es necesario.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Ideas de contribución:
+\end_layout
+
+\begin_layout Itemize
+Otro juego lógico que facilita el aprendizaje de la tabla de verdad
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Un temporizador para el juego 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SignGuess"
+
+\end_inset
+
+SignGuess.
+\end_layout
+
+\begin_layout Section
+Licencia
+\end_layout
+
+\begin_layout Standard
+ROBIT es licenciado bajo la GPLv3, que permite el uso, modificación, redistribuc
+ión de ROBIT con la condición de hacerlo bajo esta licencia.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Todos los archivos de imagenes y sonidos pueden ser usadas, modificadas
+ y distribuídas bajo la única condición de atribución al autor original.
 \end_layout
 
 \end_body
