@@ -1,0 +1,835 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\language spanish
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family sfdefault
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+ROBIT
+\end_layout
+
+\begin_layout Author
+Segundo Curso de Informática C.N.E.M.D 
+\begin_inset Quotes eld
+\end_inset
+
+Dr.
+ Raúl Peña
+\begin_inset Quotes erd
+\end_inset
+
+ Caacupé
+\end_layout
+
+\begin_layout Address
+\align center
+\begin_inset CommandInset href
+LatexCommand href
+target "http://robitweb.blogspot.com"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+ROBIT tiene como objetivo plantear una serie de aplicaciones pequeñas para
+ la diversión de los usuarios, y para desarrollar sus capacidades mentales.
+ La lógica de los juegos se basa en el sistema númerico de base 2 y la parte
+ programativa es desarrollado en Java.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introducción
+\end_layout
+
+\begin_layout Verse
+"El interés compuesto es la fuerza más poderosa de la galaxia".
+ -- Albert Einstein
+\end_layout
+
+\begin_layout Standard
+La motivación original de este proyecto es de desarrollar nuestros conocimientos
+ en el área de Matemática e Informátical; también nos permite exponer nuestro
+ esfuerzo y trabajo en la Primero EXPO Tecnología en Encarnación el año
+ 2010.
+\end_layout
+
+\begin_layout Standard
+El primer juego 
+\begin_inset Quotes eld
+\end_inset
+
+bitFlip
+\begin_inset Quotes erd
+\end_inset
+
+ (girar los bits) es la motivación principal de desarrollar este proyecto,
+ y hace uso del sistema binario y sistema númerico de base 2.
+\end_layout
+
+\begin_layout Standard
+El segundo juego 
+\begin_inset Quotes eld
+\end_inset
+
+signMix
+\begin_inset Quotes erd
+\end_inset
+
+ (ensalada de números) es ideado para el aprendizaje de operaciones aritméticas
+ básicas en el área de Mátemática.
+\end_layout
+
+\begin_layout Standard
+La elección de Java para nuestro lenguaje de programación es Java se debe
+ a que es el lenguaje que estudiamos en nuestro área específica.
+ Simplemente, porque es más fácil así trabajar en equipo.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Nosotros
+\end_layout
+
+\begin_layout Standard
+Los integrantes del grupo que elaboraron el ROBIT son las siguientes, divididos
+ en sub-grupos:
+\end_layout
+
+\begin_layout Subsubsection
+Programación
+\end_layout
+
+\begin_layout Standard
+La parte de conceptuar y programar ROBIT se debe a las siguientes personas:
+\end_layout
+
+\begin_layout Itemize
+Kenny Meyer
+\end_layout
+
+\begin_layout Itemize
+Jorge Giménez
+\end_layout
+
+\begin_layout Subsubsection
+Sección artística y Diseño Gráfico
+\end_layout
+
+\begin_layout Itemize
+Angel Aquino, por diseñar Robit como es ahora
+\end_layout
+
+\begin_layout Itemize
+Cristian Da Costa, por diseñar las pequeñas pero importantes cosas
+\end_layout
+
+\begin_layout Itemize
+Kenny Meyer
+\end_layout
+
+\begin_layout Subsubsection
+Presentación y Publicación
+\end_layout
+
+\begin_layout Itemize
+Ana Benitez
+\end_layout
+
+\begin_layout Itemize
+Ester Alfonzo del Valle
+\end_layout
+
+\begin_layout Itemize
+Oscar Chaparro
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+ROBIT
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+ROBIT
+\emph default
+, es un robot simpático cuyo sentido de existencia es divertirnos con sus
+ juegos lógicos.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename data/feliz.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Historia
+\end_layout
+
+\begin_layout Standard
+El nombre 
+\emph on
+ROBIT
+\emph default
+ se originó por la fusión de la palabra 
+\begin_inset Quotes eld
+\end_inset
+
+Robot
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Un robot es una entidad virtual o mecánica artificial.
+ En la práctica, esto es por lo general un sistema electromecánico que,
+ por su apariencia o sus movimientos, ofrece la sensación de tener un propósito
+ propio.
+ 
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Quotes eld
+\end_inset
+
+Bit
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Es la unidad más chica utilizada para medir un dato de computadora.
+ Un bit puede tener dos valores: 1 o 0
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Lenguaje de programación
+\end_layout
+
+\begin_layout Standard
+Nosotros nos decidimos de usar 
+\begin_inset CommandInset href
+LatexCommand href
+name "Java"
+target "http://es.wikipedia.org/wiki/Java_(programming_language)"
+
+\end_inset
+
+ para nuestro proyecto.
+ La elección fue relativamente facíl, por las siguientes razones:
+\end_layout
+
+\begin_layout Enumerate
+La documentación de Java es 
+\series bold
+inmensa
+\series default
+ y ya existen librerías existentes que facilitan y reducen el tiempo de
+ desarrollo.
+\end_layout
+
+\begin_layout Enumerate
+Java se introdujó en nuestra materia de Gabinete en el colegio este año,
+ que es una excelente oportunidad para aprender más de Java de paso.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Juegos
+\end_layout
+
+\begin_layout Subsection
+bitFlip
+\end_layout
+
+\begin_layout Standard
+El primer juego en la serie de los juegos de 
+\emph on
+ROBIT
+\emph default
+.
+ Literalmente traducido el nombre tiene el significado de 
+\begin_inset Quotes eld
+\end_inset
+
+girar los bits
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Objetivo
+\end_layout
+
+\begin_layout Standard
+El objetivo de este juego es que un jugador piense en un número entre 0
+ y 100, no publicando este número, y que 
+\emph on
+ROBIT 
+\emph default
+lo adivine a través de 7 preguntas simples respondiendo solo con 
+\begin_inset Quotes eld
+\end_inset
+
+Sí
+\begin_inset Quotes erd
+\end_inset
+
+ o 
+\begin_inset Quotes eld
+\end_inset
+
+No
+\begin_inset Quotes erd
+\end_inset
+
+, de acuerdo a los números que ve en la pantalla.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename data/Screenshot- .png
+	scale 50
+	clip
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+La Lógica
+\end_layout
+
+\begin_layout Standard
+En realidad es solo una 
+\begin_inset Quotes eld
+\end_inset
+
+traducción
+\begin_inset Quotes erd
+\end_inset
+
+ del número en el sistema número de base 10 al sistema númerico de base
+ 2.
+ ¿Cómo?
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+bitFlip
+\emph default
+ te pregunta 7 veces apretar 
+\begin_inset Quotes eld
+\end_inset
+
+Sí
+\begin_inset Quotes erd
+\end_inset
+
+ o 
+\begin_inset Quotes eld
+\end_inset
+
+No
+\begin_inset Quotes erd
+\end_inset
+
+, pero en realidad te está preguntando si el lugar 
+\emph on
+n
+\emph default
+ de tu número imaginario es 0 o 1, donde 
+\emph on
+n
+\emph default
+ es el lugar del número binario (o en nuestro programa el número de paso).
+\end_layout
+
+\begin_layout Standard
+Para visualizarlo mejor te doy como ejemplo una serie de 7 hojas.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename data/Screenshot-Number Magic - Opera.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Ahora, te pregunto a pensar en un número cualesquiera entre 0 y 101.
+ Después te muestro cada hoja y pregunto si hay tu número en la hoja.
+\end_layout
+
+\begin_layout Example
+Si respondes con 
+\begin_inset Quotes eld
+\end_inset
+
+Sí
+\begin_inset Quotes erd
+\end_inset
+
+, sumo imaginariamente el número en la esquina izquierda superior de cada
+ hoja mentalmente; si respondes con 
+\begin_inset Quotes eld
+\end_inset
+
+No
+\begin_inset Quotes erd
+\end_inset
+
+, no sumo nada.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align left
+Después de preguntarte 7 veces la suma de todos los números tiene que dar
+ el número imaginario.
+ En realidad así funciona 
+\emph on
+bitFlip.
+ 
+\emph default
+¿Por qué?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="3">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Potencia de 2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sistema decimal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sistema binario
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\begin_inset Formula $^{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0x00000001
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\begin_inset Formula $^{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0x00000010
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\begin_inset Formula $^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0x00000100
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\begin_inset Formula $^{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0x00001000
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\begin_inset Formula $^{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0x00010000
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\begin_inset Formula $^{5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+32
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0x00100000
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\begin_inset Formula $^{6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0x01000000
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+fd
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+SignGuess
+\end_layout
+
+\begin_layout Standard
+SignGuess, literalmente se puede traducir del Inglés como 
+\begin_inset Quotes eld
+\end_inset
+
+Mezcla de s
+\end_layout
+
+\begin_layout Subsubsection
+Objetivo
+\end_layout
+
+\begin_layout Standard
+Es un juego sencillo para agilizar las habilidades de aritmética simple
+ para niños y adultos.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
