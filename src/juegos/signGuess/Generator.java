@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package juegos.signMix;
+package juegos.signGuess;
 
 import java.util.ArrayList;
 

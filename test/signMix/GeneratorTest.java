@@ -1,6 +1,6 @@
 package signMix;
 
-import juegos.signMix.Generator;
+import juegos.signGuess.Generator;
 
 ;
 

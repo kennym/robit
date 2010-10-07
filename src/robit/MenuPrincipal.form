@@ -40,22 +40,22 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="panelPrincipal" pref="305" max="32767" attributes="0"/>
-              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="panelPrincipal" pref="324" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="panelPrincipal" alignment="1" pref="409" max="32767" attributes="0"/>
-                  <Component id="jPanel1" alignment="1" max="32767" attributes="1"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jPanel1" alignment="0" max="32767" attributes="1"/>
+                  <Component id="panelPrincipal" alignment="0" pref="409" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -89,13 +89,13 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnSalir" alignment="0" pref="100" max="32767" attributes="0"/>
-                      <Component id="btnBitFlip" alignment="0" pref="100" max="32767" attributes="0"/>
-                      <Component id="btnCreditos" alignment="0" pref="100" max="32767" attributes="0"/>
-                      <Component id="btnSignMix" alignment="1" pref="100" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="btnSignGuess" alignment="0" pref="112" max="32767" attributes="0"/>
+                      <Component id="btnSalir" alignment="0" pref="112" max="32767" attributes="0"/>
+                      <Component id="btnBitFlip" alignment="0" pref="112" max="32767" attributes="0"/>
+                      <Component id="btnCreditos" alignment="0" pref="112" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -107,7 +107,7 @@
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Component id="btnBitFlip" min="-2" pref="74" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnSignMix" min="-2" pref="74" max="-2" attributes="0"/>
+                  <Component id="btnSignGuess" min="-2" pref="74" max="-2" attributes="0"/>
                   <EmptySpace pref="166" max="32767" attributes="0"/>
                   <Component id="btnCreditos" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -153,9 +153,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreditosActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnSignMix">
+        <Component class="javax.swing.JButton" name="btnSignGuess">
           <Properties>
-            <Property name="text" type="java.lang.String" value="SignMix"/>
+            <Property name="text" type="java.lang.String" value="SignGuess"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[100, 100]"/>
             </Property>
@@ -164,9 +164,9 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSignMixMouseExited"/>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSignMixMouseEntered"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSignMixActionPerformed"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSignGuessMouseExited"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSignGuessMouseEntered"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSignGuessActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
