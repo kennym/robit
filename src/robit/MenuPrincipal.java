@@ -9,8 +9,11 @@ package robit;
  * el usuario primero hace llama a este objeto.
  *
  */
+
 import lib.Picture;
 import lib.Sonido;
+import juegos.bitFlip.GamePanel;
+import juegos.signGuess.SignGuessPanel;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,18 +23,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
     String archivoRobitFeliz    = "data/robit/feliz.png";
     String archivoRobitTriste   = "data/robit/triste.png";
     String archivoRobitBitFlip  = "data/robit/bitFlip.png";
-    String archivoRobitSignMix  = "data/robit/signMix.png";
+    String archivoRobitSignMix  = "data/robit/signGuess.png";
+    String archivoRobitAcercaDe = "data/robit/acercaDe.png";
 
-    JPanel subPanel = new JPanel();
+    JPanel subPanel             = new JPanel();
 
-    JLabel robitBienvenidos  = new Picture(archivoRobitFeliz)   .getJLabel();
-    JLabel robitTristeLabel  = new Picture(archivoRobitTriste)  .getJLabel();
-    JLabel robitBitFlipLabel = new Picture(archivoRobitBitFlip) .getJLabel();
-    JLabel robitSignMixLabel = new Picture(archivoRobitSignMix) .getJLabel();
+    JLabel robitBienvenidos     = new Picture(archivoRobitFeliz)   .getJLabel();
+    JLabel robitTristeLabel     = new Picture(archivoRobitTriste)  .getJLabel();
+    JLabel robitBitFlipLabel    = new Picture(archivoRobitBitFlip) .getJLabel();
+    JLabel robitSignMixLabel    = new Picture(archivoRobitSignMix) .getJLabel();
+    JLabel robitAcercaDe        = new Picture(archivoRobitAcercaDe).getJLabel();
 
     // Instancias de nuestros juegos.
-    juegos.bitFlip.GamePanel bitFlip        = new juegos.bitFlip.GamePanel();
-    juegos.signGuess.SignGuessPanel signMix = new juegos.signGuess.SignGuessPanel();
+    GamePanel bitFlip           = new GamePanel();
+    SignGuessPanel signMix      = new SignGuessPanel();
 
     /**
      * El inicializador (...y el TERMINATOR?)
@@ -45,15 +50,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * Arreglar los elementos en la ventana.
      */
     public void init() {
+        // Añadir los labeles de las imagenes al subpanel
         this.subPanel.add(this.robitBienvenidos);
         this.subPanel.add(this.robitTristeLabel);
         this.subPanel.add(this.robitBitFlipLabel);
         this.subPanel.add(this.robitSignMixLabel);
+        this.subPanel.add(this.robitAcercaDe);
         this.subPanel.setBackground(java.awt.Color.WHITE);
 
+        this.robitBienvenidos.setVisible(true);
         this.robitTristeLabel.setVisible(false);
         this.robitBitFlipLabel.setVisible(false);
         this.robitSignMixLabel.setVisible(false);
+        this.robitAcercaDe.setVisible(false);
 
         panelPrincipal.add(this.subPanel);
         panelPrincipal.add(bitFlip);
@@ -75,6 +84,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }
 
+    public void mostrarSubPanel() {
+        this.subPanel.setVisible(true);
+    }
+
+    public void ocultarSubPanel() {
+        this.subPanel.setVisible(false);
+    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -145,8 +161,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnCreditos.setText("Créditos");
+        btnCreditos.setText("Acerca De");
         btnCreditos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCreditosMouseExited(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCreditosMouseEntered(evt);
             }
@@ -181,10 +200,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnSignGuess, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                    .addComponent(btnBitFlip, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                    .addComponent(btnCreditos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
+                    .addComponent(btnSignGuess, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                    .addComponent(btnBitFlip, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                    .addComponent(btnCreditos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -207,7 +226,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -221,6 +240,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(panelPrincipal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE))
                 .addContainerGap())
         );
+
+        getAccessibleContext().setAccessibleName("ROBIT v1.0");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -245,6 +266,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreditosActionPerformed
 
     private void btnBitFlipMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitFlipMouseEntered
+        mostrarSubPanel();
         this.robitBienvenidos.setVisible(false);
         this.robitBitFlipLabel.setVisible(true);
         this.validate();
@@ -252,18 +274,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBitFlipMouseEntered
 
     private void btnBitFlipMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitFlipMouseExited
+        ocultarSubPanel();
         this.robitBitFlipLabel.setVisible(false);
         this.robitBienvenidos.setVisible(true);
         this.validate();
     }//GEN-LAST:event_btnBitFlipMouseExited
 
     private void btnSignGuessMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignGuessMouseExited
+        ocultarSubPanel();
         this.robitSignMixLabel.setVisible(false);
         this.robitBienvenidos.setVisible(true);
         this.validate();
     }//GEN-LAST:event_btnSignGuessMouseExited
 
     private void btnSignGuessMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignGuessMouseEntered
+        mostrarSubPanel();
         this.robitBienvenidos.setVisible(false);
         this.robitSignMixLabel.setVisible(true);
         this.validate();
@@ -280,20 +305,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSignGuessActionPerformed
 
     private void btnCreditosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCreditosMouseEntered
+        mostrarSubPanel();
+        this.robitBienvenidos.setVisible(false);
+        this.robitAcercaDe.setVisible(true);
         Sonido.reproducirSonidoHover();
     }//GEN-LAST:event_btnCreditosMouseEntered
 
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+        mostrarSubPanel();
         this.robitBienvenidos.setVisible(false);
         this.robitTristeLabel.setVisible(true);
         Sonido.reproducirSonidoHover();
     }//GEN-LAST:event_btnSalirMouseEntered
 
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+        ocultarSubPanel();
         this.robitTristeLabel.setVisible(false);
         this.robitBienvenidos.setVisible(true);
         Sonido.reproducirSonidoHover();
     }//GEN-LAST:event_btnSalirMouseExited
+
+    private void btnCreditosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCreditosMouseExited
+        ocultarSubPanel();
+        this.robitAcercaDe.setVisible(false);
+        this.robitBienvenidos.setVisible(true);
+        Sonido.reproducirSonidoHover();
+    }//GEN-LAST:event_btnCreditosMouseExited
 
     /**
     * @param args the command line arguments

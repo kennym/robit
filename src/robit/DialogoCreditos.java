@@ -57,7 +57,7 @@ public class DialogoCreditos extends javax.swing.JDialog {
 
         jEditorPane1.setContentType("text/html");
         jEditorPane1.setEditable(false);
-        jEditorPane1.setText("<html>\n  <head>\n\n  </head>\n  <body>\n    <p style=\"margin-top: 0\">\n      <b>Descripción breve:</b>  ROBIT es un proyecto...</b><br />\n      <b>Página web/Blog:   </b> <a href=\"http://robitweb.blogspot.com\">robitweb.blogspot.com</a>\n    </p>\n  </body>\n</html>\n");
+        jEditorPane1.setText("<html>\n  <head>\n\n  </head>\n  <body>\n    <p style=\"margin-top: 0\">\n      <b>ROBIT es un proyecto elaborado por el Segundo Curso del Segundo Año del Colegio Nacional E.M.D. \"Dr. Raúl Peña\" Caacupé - Paraguay.</b><br /><br />\n\n      <b>Página web/Blog:</b><a href=\"http://robitweb.blogspot.com\">robitweb.blogspot.com</a><br />\n      <b>Versión:</b>1.0<br /></br>\n      <b>Reportar parches/bugs:</b> Si encuentras algun error, abre un nuevo ticket en <a href=\"http://github.com/km0r3/robit/issues\">GitHub</a><br />\n      Si queres contribuir nuevas ideas en forma de código, imagenes, audio, etc. podes obtener el código de GitHub, y así crear, con Git, el parche.<br /><br />\n\n      <b>Consultas:</b> <a href=\"mailto:knny.myer@gmail.com\">por mail.<a>\n    </p>\n  </body>\n</html>\n");
         jEditorPane1.setDoubleBuffered(true);
         jScrollPane1.setViewportView(jEditorPane1);
 
@@ -85,7 +85,7 @@ public class DialogoCreditos extends javax.swing.JDialog {
         jTabbedPane1.addTab("Créditos", creditosPanel);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {

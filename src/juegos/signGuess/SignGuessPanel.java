@@ -1,6 +1,8 @@
 package juegos.signGuess;
 
+import java.awt.Color;
 import java.util.ArrayList;
+
 import javax.swing.*;
 
 import lib.Picture;
@@ -11,12 +13,12 @@ import lib.Sonido;
  * @author Kenny Meyer <knny.myer@gmail.com>
  * @author Jorge Gimenez <jrg.gmnz@hotmail.com>
  *
- * TODO: El temporizador
  */
 public class SignGuessPanel extends javax.swing.JPanel {
 
     private Generator generador = new Generator();
     private ArrayList<String> numeros = new ArrayList<String>();
+
     JLabel instrucciones = new Picture("data/robit/signMix/instrucciones.png").getJLabel();
     JLabel caraFeliz = new Picture("data/robit/signMix/feliz.png").getJLabel();
     JLabel caraMuyFeliz = new Picture("data/robit/signMix/muyFeliz.png").getJLabel();
@@ -88,6 +90,7 @@ public class SignGuessPanel extends javax.swing.JPanel {
         etiCuartoNumero.setVisible(false);
         txtSigno2.setVisible(false);
         txtSigno3.setVisible(false);
+        btnOk.setVisible(true);
         resetearMalasVeces();
         mostrarInstrucciones();
         mostrarMensaje("");
@@ -133,6 +136,7 @@ public class SignGuessPanel extends javax.swing.JPanel {
         } else {
             mostrarMensaje("Sos un MASTER. Felicidades!");
             mostrarRobitMuyFeliz();
+            btnOk.setVisible(false);
             Sonido.reproducirSonidoStartGame();
         }
     }
@@ -222,10 +226,15 @@ public class SignGuessPanel extends javax.swing.JPanel {
         etiResultado = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(400, 305));
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        etiMensaje.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        etiMensaje.setFont(new java.awt.Font("SansSerif", 0, 24));
         etiMensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -241,11 +250,16 @@ public class SignGuessPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(etiMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(etiMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 5, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         btnOk.setText("OK");
+        btnOk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnOkMouseReleased(evt);
+            }
+        });
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOkActionPerformed(evt);
@@ -254,6 +268,11 @@ public class SignGuessPanel extends javax.swing.JPanel {
         jPanel3.add(btnOk);
 
         btnReset.setText("Reset");
+        btnReset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnResetMouseReleased(evt);
+            }
+        });
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
@@ -268,43 +287,61 @@ public class SignGuessPanel extends javax.swing.JPanel {
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        etiPrimer.setFont(new java.awt.Font("Aurulent Sans", 0, 24)); // NOI18N
+        etiPrimer.setFont(new java.awt.Font("Aurulent Sans", 0, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
         jPanel4.add(etiPrimer, gridBagConstraints);
 
-        txtSigno1.setColumns(1);
+        txtSigno1.setColumns(2);
+        txtSigno1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSigno1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSigno1KeyReleased(evt);
+            }
+        });
         jPanel4.add(txtSigno1, new java.awt.GridBagConstraints());
 
-        etiSegundo.setFont(new java.awt.Font("Aurulent Sans", 0, 24)); // NOI18N
+        etiSegundo.setFont(new java.awt.Font("Aurulent Sans", 0, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
         jPanel4.add(etiSegundo, gridBagConstraints);
 
-        txtSigno2.setColumns(1);
+        txtSigno2.setColumns(2);
+        txtSigno2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSigno2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSigno2KeyReleased(evt);
+            }
+        });
         jPanel4.add(txtSigno2, new java.awt.GridBagConstraints());
 
-        etiTercerNumero.setFont(new java.awt.Font("Aurulent Sans", 0, 24)); // NOI18N
+        etiTercerNumero.setFont(new java.awt.Font("Aurulent Sans", 0, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.ipadx = 10;
         jPanel4.add(etiTercerNumero, gridBagConstraints);
 
-        txtSigno3.setColumns(1);
+        txtSigno3.setColumns(2);
+        txtSigno3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSigno3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSigno3KeyReleased(evt);
+            }
+        });
         jPanel4.add(txtSigno3, new java.awt.GridBagConstraints());
 
-        etiCuartoNumero.setFont(new java.awt.Font("Aurulent Sans", 0, 24)); // NOI18N
+        etiCuartoNumero.setFont(new java.awt.Font("Aurulent Sans", 0, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         jPanel4.add(etiCuartoNumero, gridBagConstraints);
 
-        jLabel3.setFont(new java.awt.Font("Aurulent Sans", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Aurulent Sans", 0, 24));
         jLabel3.setText(" = ");
         jPanel4.add(jLabel3, new java.awt.GridBagConstraints());
 
-        etiResultado.setFont(new java.awt.Font("Aurulent Sans", 0, 24)); // NOI18N
+        etiResultado.setFont(new java.awt.Font("Aurulent Sans", 0, 24));
         jPanel4.add(etiResultado, new java.awt.GridBagConstraints());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -324,7 +361,7 @@ public class SignGuessPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(robitPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                .addComponent(robitPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -339,11 +376,13 @@ public class SignGuessPanel extends javax.swing.JPanel {
         reset();
 }//GEN-LAST:event_btnResetActionPerformed
 
-    private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
+    private void btnOk() {
         /*
          * Cuando el jugador aprieta el botón OK, verificar que el resultado
          * sea correcto.
          */
+
+        Sonido.reproducirSonidoPress2();
 
         // El patrón
         String masOMenos = "^(\\+|\\-)"; // O "+" o "-"
@@ -410,7 +449,67 @@ public class SignGuessPanel extends javax.swing.JPanel {
                 etiMensaje.setText("Ingrese el signo + ó - !");
             }
         }
+    }
+    private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
+        btnOk();
 }//GEN-LAST:event_btnOkActionPerformed
+
+    private void btnOkMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOkMouseReleased
+        Sonido.reproducirSonidoPress2();
+    }//GEN-LAST:event_btnOkMouseReleased
+
+    private void btnResetMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnResetMouseReleased
+        Sonido.reproducirSonidoStartGame();
+    }//GEN-LAST:event_btnResetMouseReleased
+
+    private void txtSigno1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSigno1KeyReleased
+        int length = txtSigno1.getText().length();
+        if (length > 1) {
+            mostrarMensaje("Ingresa solo un signo!");
+            txtSigno1.setBackground(Color.red);
+        } else {
+            mostrarMensaje("");
+            txtSigno1.setBackground(Color.WHITE);
+        }
+
+        if (evt.getKeyCode() == 10) { // Enter
+            btnOk();
+        }
+    }//GEN-LAST:event_txtSigno1KeyReleased
+
+    private void txtSigno2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSigno2KeyReleased
+        int length = txtSigno2.getText().length();
+        if (length > 1) {
+            mostrarMensaje("Ingresa solo un signo!");
+            txtSigno2.setBackground(Color.red);
+        } else {
+            mostrarMensaje("");
+            txtSigno2.setBackground(Color.WHITE);
+        }
+
+        if (evt.getKeyCode() == 10) { // Enter
+            btnOk();
+        }
+    }//GEN-LAST:event_txtSigno2KeyReleased
+
+    private void txtSigno3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSigno3KeyReleased
+        int length = txtSigno3.getText().length();
+        if (length > 1) {
+            mostrarMensaje("Ingresa solo un signo!");
+            txtSigno3.setBackground(Color.red);
+        } else {
+            mostrarMensaje("");
+            txtSigno3.setBackground(Color.WHITE);
+        }
+
+        if (evt.getKeyCode() == 10) { // Enter
+            btnOk();
+        }
+    }//GEN-LAST:event_txtSigno3KeyReleased
+
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+    }//GEN-LAST:event_formKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOk;
     private javax.swing.JButton btnReset;

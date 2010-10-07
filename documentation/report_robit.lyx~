@@ -85,8 +85,8 @@ target "http://robitweb.blogspot.com"
 \begin_layout Abstract
 ROBIT tiene como objetivo plantear una serie de aplicaciones pequeñas para
  la diversión de los usuarios, y para desarrollar sus capacidades mentales.
- La lógica de los juegos se basa en el sistema númerico de base 2 y la parte
- programativa es desarrollado en Java.
+ La lógica de los juegos se basa en conceptos matemáticos conocidos y la
+ parte programativa es desarrollado en Java.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -107,7 +107,7 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Introducción
+Fundamentación
 \end_layout
 
 \begin_layout Verse
@@ -117,8 +117,8 @@ Introducción
 
 \begin_layout Standard
 La motivación original de este proyecto es de desarrollar nuestros conocimientos
- en el área de Matemática e Informátical; también nos permite exponer nuestro
- esfuerzo y trabajo en la Primero EXPO Tecnología en Encarnación el año
+ en el área de Matemática e Informática; también nos permite exponer nuestro
+ esfuerzo y trabajo en la Primero EXPO Tecnología de Encarnación del año
  2010.
 \end_layout
 
@@ -132,7 +132,7 @@ bitFlip
 \end_inset
 
  (girar los bits) es la motivación principal de desarrollar este proyecto,
- y hace uso del sistema binario y sistema númerico de base 2.
+ y hace uso del sistema binario o sistema númerico de base 2.
 \end_layout
 
 \begin_layout Standard
@@ -140,18 +140,12 @@ El segundo juego
 \begin_inset Quotes eld
 \end_inset
 
-signMix
+signGuess
 \begin_inset Quotes erd
 \end_inset
 
- (ensalada de números) es ideado para el aprendizaje de operaciones aritméticas
+ (Adivina-el-signo) es ideado para el aprendizaje de operaciones aritméticas
  básicas en el área de Mátemática.
-\end_layout
-
-\begin_layout Standard
-La elección de Java para nuestro lenguaje de programación es Java se debe
- a que es el lenguaje que estudiamos en nuestro área específica.
- Simplemente, porque es más fácil así trabajar en equipo.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -159,7 +153,7 @@ La elección de Java para nuestro lenguaje de programación es Java se debe
 \end_layout
 
 \begin_layout Subsection
-Nosotros
+Integrantes
 \end_layout
 
 \begin_layout Standard
@@ -208,7 +202,7 @@ Ana Benitez
 \end_layout
 
 \begin_layout Itemize
-Ester Alfonzo del Valle
+Ester Alfonzo Delvalle
 \end_layout
 
 \begin_layout Itemize
@@ -237,16 +231,9 @@ ROBIT
 
 \begin_layout Standard
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "ROBIT"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename data/feliz.png
-	scale 50
+	scale 45
 
 \end_inset
 
@@ -254,7 +241,7 @@ name "ROBIT"
 \end_layout
 
 \begin_layout Subsection
-Historia
+Significado del Nombre
 \end_layout
 
 \begin_layout Standard
@@ -307,11 +294,11 @@ Es la unidad más chica utilizada para medir un dato de computadora.
 \end_layout
 
 \begin_layout Subsection
-Java
+Lenguaje de programación
 \end_layout
 
 \begin_layout Standard
-Nosotros nos decidimos de usar 
+Decidimos usar 
 \begin_inset CommandInset href
 LatexCommand href
 name "Java"
@@ -328,13 +315,13 @@ La documentación de Java es
 \series bold
 inmensa
 \series default
- y ya existen librerías existentes que facilitan y reducen el tiempo de
- desarrollo.
+ y ya existen librerías útiles, que facilitan y reducen el tiempo de desarrollo.
 \end_layout
 
 \begin_layout Enumerate
-Java se introdujó en nuestra materia de Gabinete en el colegio este año,
- que es una excelente oportunidad para aprender más de Java de paso.
+Java se introdujo en nuestra materia específica de Informática en este año
+ lectivo, que es una excelente oportunidad para aprender más de programación
+ en Java.
 \end_layout
 
 \begin_layout Standard
@@ -345,6 +332,10 @@ Java se introdujó en nuestra materia de Gabinete en el colegio este año,
 \end_layout
 
 \begin_layout Section
+Marco teórico
+\end_layout
+
+\begin_layout Section*
 Juegos
 \end_layout
 
@@ -353,12 +344,12 @@ bitFlip
 \end_layout
 
 \begin_layout Standard
-El primer juego en la serie de los juegos de 
+Es el primer juego de la serie de 
 \emph on
 ROBIT
 \emph default
 .
- Literalmente traducido el nombre tiene el significado de 
+ El nombre literalmente traducido del Inglés significa 
 \begin_inset Quotes eld
 \end_inset
 
@@ -374,12 +365,12 @@ Objetivo
 \end_layout
 
 \begin_layout Standard
-El objetivo de este juego es que un jugador piense en un número entre 0
- y 100, no publicando este número, y que 
+El objetivo de este juego es que un jugador/usuario piense en un número
+ entre 0 y 100, sin dar evidencia de él, y que 
 \emph on
 ROBIT 
 \emph default
-lo adivine a través de 7 preguntas simples respondiendo solo con 
+lo adivine a través de 7 preguntas simples respondiendo con 
 \begin_inset Quotes eld
 \end_inset
 
@@ -395,7 +386,7 @@ No
 \begin_inset Quotes erd
 \end_inset
 
-, de acuerdo a los números que ve en la pantalla.
+, de acuerdo a los números que ve en la pantalla y a la elección.
 \begin_inset Newline newline
 \end_inset
 
@@ -428,8 +419,8 @@ traducción
 \begin_inset Quotes erd
 \end_inset
 
- del número en el sistema número de base 10 al sistema númerico de base
- 2.
+ del número imaginario, en el sistema numérico de base 10, al sistema numérico
+ de base 2.
  ¿Cómo?
 \begin_inset Newline newline
 \end_inset
@@ -442,23 +433,8 @@ traducción
 \emph on
 bitFlip
 \emph default
- te pregunta 7 veces apretar 
-\begin_inset Quotes eld
-\end_inset
-
-Sí
-\begin_inset Quotes erd
-\end_inset
-
- o 
-\begin_inset Quotes eld
-\end_inset
-
-No
-\begin_inset Quotes erd
-\end_inset
-
-, pero en realidad te está preguntando si el lugar 
+ te pregunta 7 veces si el número imaginario se encuentra en la lista, pero
+ en realidad te está preguntando si el lugar 
 \emph on
 n
 \emph default
@@ -815,11 +791,48 @@ SignGuess
 \end_layout
 
 \begin_layout Standard
-SignGuess, literalmente se puede traducir del Inglés como 
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0col%
+width "50col%"
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename data/signGuess.png
+	width 40page%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+signGuess en acción
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+SignGuess, literalmente se puede traducir del Inglés 
 \begin_inset Quotes eld
 \end_inset
 
-Mezcla de s
+Adivina el Signo
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -829,6 +842,12 @@ Objetivo
 \begin_layout Standard
 Es un juego sencillo para agilizar las habilidades de aritmética simple
  para niños y adultos.
+ Consiste en qué un jugador complete el espacio en blanco con el signo correcto.
+\end_layout
+
+\begin_layout Standard
+SignGuess se basa por niveles; el juego se reinicia cuando el jugador llega
+ a terminar el tercer nivel.
 \end_layout
 
 \begin_layout Standard
@@ -836,6 +855,31 @@ Es un juego sencillo para agilizar las habilidades de aritmética simple
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Anexo
+\end_layout
+
+\begin_layout Subsection
+Licenciatura
+\end_layout
+
+\begin_layout Standard
+ROBIT es licenciado bajo la GPLv2.1, que permite el uso, modificación, redistribu
+ción de ROBIT con la condición de hacerlo bajo esta licencia.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Todos los imagenes pueden ser usadas bajo las condiciones de Creative Commons.
+\end_layout
+
+\begin_layout Subsection
+Contribución y desarrollo
 \end_layout
 
 \end_body

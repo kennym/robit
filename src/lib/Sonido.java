@@ -108,6 +108,10 @@ public class Sonido extends Thread {
         new Sonido("data/sounds/press.wav").start();
     }
 
+    public static void reproducirSonidoPress2() {
+        new Sonido("data/sounds/press2.wav").start();
+    }
+
     public static void main(String[] args) {
         //new Sonido("/home/kenny/Programming/Java/Robit/src/lib/data/sounds/hover.wav").start();
         new Sonido("data/sounds/hover.wav").start();

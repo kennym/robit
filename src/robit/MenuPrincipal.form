@@ -22,6 +22,9 @@
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="ROBIT"/>
   </Properties>
+  <AccessibilityProperties>
+    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ROBIT v1.0"/>
+  </AccessibilityProperties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
@@ -42,7 +45,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panelPrincipal" pref="324" max="32767" attributes="0"/>
+              <Component id="panelPrincipal" pref="312" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -92,10 +95,10 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="btnSignGuess" alignment="0" pref="112" max="32767" attributes="0"/>
-                      <Component id="btnSalir" alignment="0" pref="112" max="32767" attributes="0"/>
-                      <Component id="btnBitFlip" alignment="0" pref="112" max="32767" attributes="0"/>
-                      <Component id="btnCreditos" alignment="0" pref="112" max="32767" attributes="0"/>
+                      <Component id="btnSignGuess" alignment="0" pref="114" max="32767" attributes="0"/>
+                      <Component id="btnSalir" alignment="0" pref="114" max="32767" attributes="0"/>
+                      <Component id="btnBitFlip" alignment="0" pref="114" max="32767" attributes="0"/>
+                      <Component id="btnCreditos" alignment="0" pref="114" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -146,9 +149,10 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCreditos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cr&#xe9;ditos"/>
+            <Property name="text" type="java.lang.String" value="Acerca De"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCreditosMouseExited"/>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCreditosMouseEntered"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreditosActionPerformed"/>
           </Events>
