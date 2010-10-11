@@ -10,4 +10,24 @@ para desarrollar sus capacidades mentales. La lógica de los
 juegos se basa en conceptos matemáticos conocidos y la parte 
 programativa es desarrollado en Java.
 
-Obtener el código desde: http://github.com/km0r3/robit/
+Obtener el código más reciente desde: http://github.com/km0r3/robit/
+
+EJECUCIÓN
+=========
+
+ 1) Verifica que tienes instalado el SDK de Java. Si hace falta instalarlo
+    puedes usar el instalador en la carpeta Java_Instalador.
+
+ Con Windows:
+ 2) Para ejecutar ROBIT, haga doble clíc sobre "robit.jar".
+
+ Con Linux:
+ 2) Desde una terminal, ejecuta robit.jar de la siguiente manera:
+
+        java -jar robit.jar
+
+ 3) YA ESTÁ! :-)
+
+Si hay problemas en el segundo paso en Windows, sigue los pasos aquí:
+    
+    http://www.chuidiang.com/java/novatos/hacer_ficheros_jar.php#ejecutar

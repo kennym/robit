@@ -61,7 +61,7 @@ public class DialogoCreditos extends javax.swing.JDialog {
 
     public void init() {
         Picture picture = new Picture("data/creditos_small.jpg");
-        creditosPanel.add(picture.getJLabel());
+        creditosPanel.add("Creditos", picture.getJLabel());
         pack();
     }
 

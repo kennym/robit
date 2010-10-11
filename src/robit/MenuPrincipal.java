@@ -79,11 +79,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public void init() {
         // Añadir los labeles de las imagenes al subpanel
-        this.subPanel.add(this.robitBienvenidos);
-        this.subPanel.add(this.robitTristeLabel);
-        this.subPanel.add(this.robitBitFlipLabel);
-        this.subPanel.add(this.robitSignMixLabel);
-        this.subPanel.add(this.robitAcercaDe);
+        this.subPanel.add("bienvenidos", this.robitBienvenidos);
+        this.subPanel.add("robitTriste", this.robitTristeLabel);
+        this.subPanel.add("robitBitFlip", this.robitBitFlipLabel);
+        this.subPanel.add("robitSignMix", this.robitSignMixLabel);
+        this.subPanel.add("robitAcercaDe", this.robitAcercaDe);
         this.subPanel.setBackground(java.awt.Color.WHITE);
 
         this.robitBienvenidos.setVisible(true);
@@ -92,12 +92,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.robitSignMixLabel.setVisible(false);
         this.robitAcercaDe.setVisible(false);
 
-        panelPrincipal.add(this.subPanel);
-        panelPrincipal.add(bitFlip);
+        panelPrincipal.add("subPanel", this.subPanel);
+        panelPrincipal.add("bitFlip", bitFlip);
         // Añadir bitFlip al panel
         bitFlip.setVisible(false);
         // Añadir signMix al panel
-        panelPrincipal.add(signMix);
+        panelPrincipal.add("signMix", signMix);
         signMix.setVisible(false);
         pack();
     }

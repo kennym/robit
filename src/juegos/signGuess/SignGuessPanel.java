@@ -73,12 +73,12 @@ public class SignGuessPanel extends javax.swing.JPanel {
     }
 
     private void init() {
-        robitPanel.add(caraFeliz);
-        robitPanel.add(caraMuyFeliz);
-        robitPanel.add(caraEnojada);
-        robitPanel.add(caraTriste);
-        robitPanel.add(caraMasTriste);
-        robitPanel.add(instrucciones);
+        robitPanel.add("CaraFeliz", caraFeliz);
+        robitPanel.add("CaraMuyFeliz", caraMuyFeliz);
+        robitPanel.add("CaraEnojada", caraEnojada);
+        robitPanel.add("CaraTriste", caraTriste);
+        robitPanel.add("CaraMasTriste", caraMasTriste);
+        robitPanel.add("Instrucciones", instrucciones);
         caraFeliz.setVisible(false);
         caraEnojada.setVisible(false);
         caraTriste.setVisible(false);
@@ -521,7 +521,7 @@ public class SignGuessPanel extends javax.swing.JPanel {
         }
 
         if (evt.getKeyCode() == 10) { // Enter
-            btnOk();
+                btnOk();
         }
     }//GEN-LAST:event_txtSigno2KeyReleased
 

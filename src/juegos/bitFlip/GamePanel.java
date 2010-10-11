@@ -30,6 +30,8 @@
  *  Junto con este programa, se debería incluir una copia de la Licencia Pública General de GNU.
  *  De no ser así, ingrese en <http://www.gnu.org/licenses/>.
  */
+
+// TODO: Cuando el jugador ingresa 7 veces el mismo valor, el n'umero final excede el numero maximo.
 package juegos.bitFlip;
 
 import javax.swing.JFrame;
